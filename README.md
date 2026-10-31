@@ -29,12 +29,15 @@ The optimized production bundle will be generated in `dist/`.
 
 ```
 src/
-├── App.jsx                     # Master application container
+├── App.jsx                     # Master container with routing (Home vs Payment Gateway)
 ├── main.jsx                    # React entry point
 ├── index.css                   # Tailwind base directives & custom keyframes
+├── pages/
+│   ├── HomePage.jsx            # All-in-One Australian Payments Ecosystem
+│   └── PaymentGatewayPage.jsx  # Dedicated Online Gateway Product Page (/payment-gateway/)
 └── components/
-    ├── Header.jsx              # Announcement bar, mega-menu, phone link & CTA
-    ├── Hero.jsx                # Value headline, dual CTAs, interactive PAX A920 3D mockup
+    ├── Header.jsx              # Logo, switcher, mega-menu, phone link & CTA
+    ├── Hero.jsx                # Hero with 3D PAX A920 contactless tap simulation
     ├── SocialProof.jsx         # 4 trust badges (Same-day, 5.0 Google stars, 0 lock-in, 24/7 Aussie)
     ├── SameDaySettlement.jsx   # Dark navy highlight band, 3 stat tiles & bank logos
     ├── SolutionsGrid.jsx       # 3x2 Bento grid for all 6 core product verticals
