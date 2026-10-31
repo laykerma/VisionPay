@@ -5,7 +5,7 @@ export default function SocialProof() {
   const badges = [
     {
       icon: Zap,
-      iconBg: 'bg-brand-emerald-light text-brand-emerald border-brand-emerald-border',
+      iconBg: 'bg-brand-primary-light text-brand-primary border-brand-primary-border',
       title: 'Same-Day Settlement',
       subtitle: 'To any Australian bank, 365 days',
     },
@@ -18,7 +18,7 @@ export default function SocialProof() {
     },
     {
       icon: Unlock,
-      iconBg: 'bg-blue-50 text-brand-blue border-blue-200',
+      iconBg: 'bg-blue-50 text-brand-primary border-brand-primary-border',
       title: 'No Lock-in Contracts',
       subtitle: 'Cancel anytime, zero exit penalties',
     },
@@ -56,4 +56,3 @@ export default function SocialProof() {
     </section>
   );
 }
-

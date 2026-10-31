@@ -1,11 +1,10 @@
 import React from 'react';
-import { Star } from 'lucide-react';
 
 export default function Testimonials() {
   const partners = [
     { code: 'EP', name: 'ElitePOS', bg: 'bg-slate-900 text-white' },
     { code: 'PS', name: 'PracShield Health', bg: 'bg-blue-600 text-white' },
-    { code: 'SB', name: 'Storebase Retail', bg: 'bg-emerald-600 text-white' },
+    { code: 'SB', name: 'Storebase Retail', bg: 'bg-brand-primary text-white' },
     { code: 'W', name: 'WooCommerce', bg: 'bg-purple-600 text-white' },
     { code: 'X', name: 'Xero Connected', bg: 'bg-sky-500 text-white' },
   ];
@@ -64,7 +63,7 @@ export default function Testimonials() {
 
             <div className="mt-8 pt-6 border-t border-slate-800">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brand-emerald/20 text-brand-emerald flex items-center justify-center font-bold text-xs">
+                <div className="w-10 h-10 rounded-full bg-brand-primary/20 text-brand-primary-border flex items-center justify-center font-bold text-xs">
                   100%
                 </div>
                 <div className="text-xs">
@@ -76,7 +75,7 @@ export default function Testimonials() {
           </div>
 
           {/* Testimonial 1 */}
-          <div className="lg:col-span-4 bg-brand-light rounded-3xl p-8 border border-brand-border flex flex-col justify-between hover:border-brand-emerald/40 transition-colors">
+          <div className="lg:col-span-4 bg-brand-light rounded-3xl p-8 border border-brand-border flex flex-col justify-between hover:border-brand-primary/40 transition-colors">
             <div>
               <div className="text-amber-400 text-sm mb-3">★★★★★</div>
               <p className="text-sm text-brand-slate font-medium leading-relaxed italic">
@@ -96,7 +95,7 @@ export default function Testimonials() {
           </div>
 
           {/* Testimonial 2 */}
-          <div className="lg:col-span-4 bg-brand-light rounded-3xl p-8 border border-brand-border flex flex-col justify-between hover:border-brand-emerald/40 transition-colors">
+          <div className="lg:col-span-4 bg-brand-light rounded-3xl p-8 border border-brand-border flex flex-col justify-between hover:border-brand-primary/40 transition-colors">
             <div>
               <div className="text-amber-400 text-sm mb-3">★★★★★</div>
               <p className="text-sm text-brand-slate font-medium leading-relaxed italic">
@@ -105,7 +104,7 @@ export default function Testimonials() {
             </div>
             
             <div className="mt-6 pt-6 border-t border-brand-border flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-brand-emerald text-white flex items-center justify-center font-bold text-xs">
+              <div className="w-10 h-10 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xs">
                 SL
               </div>
               <div>
@@ -121,4 +120,3 @@ export default function Testimonials() {
     </section>
   );
 }
-

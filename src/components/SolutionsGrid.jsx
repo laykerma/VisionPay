@@ -14,7 +14,7 @@ export default function SolutionsGrid() {
   const solutions = [
     {
       icon: Laptop,
-      iconBg: 'bg-blue-50 text-brand-blue group-hover:bg-brand-blue group-hover:text-white',
+      iconBg: 'bg-brand-primary-light text-brand-primary group-hover:bg-brand-primary group-hover:text-white',
       badge: '$0 Monthly Fee',
       badgeColor: 'bg-emerald-100 text-emerald-800',
       title: 'Online Payments',
@@ -28,7 +28,7 @@ export default function SolutionsGrid() {
     },
     {
       icon: CreditCard,
-      iconBg: 'bg-emerald-50 text-brand-emerald group-hover:bg-brand-emerald group-hover:text-white',
+      iconBg: 'bg-brand-primary-light text-brand-primary group-hover:bg-brand-primary group-hover:text-white',
       badge: 'PAX A920 Hardware',
       badgeColor: 'bg-blue-100 text-blue-800',
       title: 'In-Store EFTPOS',
@@ -44,7 +44,7 @@ export default function SolutionsGrid() {
       icon: Store,
       iconBg: 'bg-purple-50 text-purple-600 group-hover:bg-purple-600 group-hover:text-white',
       badge: 'NEW RELEASE',
-      badgeColor: 'bg-brand-emerald text-white',
+      badgeColor: 'bg-brand-primary text-white',
       isHighlight: true,
       title: 'VisionPay POS',
       description: 'Why pay $120/month per terminal for POS software? VisionPay POS offers table management, modifier menus, barcode scanning, and multi-till syncing with $0 monthly software fees.',
@@ -105,7 +105,7 @@ export default function SolutionsGrid() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-emerald bg-brand-emerald-light px-3 py-1 rounded-full border border-brand-emerald-border">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-primary bg-brand-primary-light px-3 py-1 rounded-full border border-brand-primary-border">
             The Complete Payment Ecosystem
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-3">
@@ -123,10 +123,10 @@ export default function SolutionsGrid() {
             return (
               <div 
                 key={idx}
-                className={`bg-white rounded-2xl p-7 border ${item.isHighlight ? 'border-2 border-brand-emerald/30 relative overflow-hidden' : 'border-brand-border'} shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group`}
+                className={`bg-white rounded-2xl p-7 border ${item.isHighlight ? 'border-2 border-brand-primary/30 relative overflow-hidden' : 'border-brand-border'} shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group`}
               >
                 {item.isHighlight && (
-                  <div className="absolute -right-12 -top-12 w-28 h-28 bg-brand-emerald/10 rounded-full blur-xl pointer-events-none" />
+                  <div className="absolute -right-12 -top-12 w-28 h-28 bg-brand-primary/10 rounded-full blur-xl pointer-events-none" />
                 )}
 
                 <div>
@@ -139,7 +139,7 @@ export default function SolutionsGrid() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-brand-navy group-hover:text-brand-emerald transition-colors">
+                  <h3 className="text-xl font-bold text-brand-navy group-hover:text-brand-primary transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-sm text-brand-muted mt-2 leading-relaxed">
@@ -149,7 +149,7 @@ export default function SolutionsGrid() {
                   <ul className="mt-4 space-y-2 text-xs font-medium text-slate-700">
                     {item.features.map((feat, fIdx) => (
                       <li key={fIdx} className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-brand-emerald shrink-0" />
+                        <Check className="w-4 h-4 text-brand-primary shrink-0" />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -160,7 +160,7 @@ export default function SolutionsGrid() {
                   <span className="text-xs font-bold text-brand-navy">{item.tag}</span>
                   <a 
                     href="#quote-section" 
-                    className="text-xs font-bold text-brand-emerald group-hover:translate-x-1 transition-transform flex items-center gap-1"
+                    className="text-xs font-bold text-brand-primary group-hover:translate-x-1 transition-transform flex items-center gap-1"
                   >
                     <span>{item.cta}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -175,4 +175,3 @@ export default function SolutionsGrid() {
     </section>
   );
 }
-

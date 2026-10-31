@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, ShieldCheck, Lock } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Lock } from 'lucide-react';
 
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -57,13 +57,13 @@ export default function QuoteForm() {
     <section id="quote-section" className="py-24 bg-gradient-to-b from-brand-light via-white to-slate-50 border-t border-brand-border">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border-2 border-brand-emerald/20 shadow-2xl relative overflow-hidden">
-          {/* Subtle Decorative Glow */}
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-emerald/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border-2 border-brand-primary/20 shadow-2xl relative overflow-hidden">
+          {/* Subtle Decorative Glow in Brand Blue */}
+          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-primary/10 rounded-full blur-3xl pointer-events-none" />
 
           {/* Heading */}
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-brand-emerald bg-brand-emerald-light px-3.5 py-1.5 rounded-full border border-brand-emerald-border">
+            <span className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-brand-primary bg-brand-primary-light px-3.5 py-1.5 rounded-full border border-brand-primary-border">
               <span>⚡ Custom Rate Comparison</span>
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-brand-navy tracking-tight mt-3">
@@ -81,7 +81,7 @@ export default function QuoteForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="fullName" className="block text-xs font-bold uppercase tracking-wider text-brand-slate mb-1.5">
-                    Full Name <span className="text-brand-emerald">*</span>
+                    Full Name <span className="text-brand-primary">*</span>
                   </label>
                   <input 
                     type="text" 
@@ -90,12 +90,12 @@ export default function QuoteForm() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="e.g. Lachlan Murdoch" 
-                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-emerald focus:border-transparent text-sm font-medium transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-sm font-medium transition-all"
                   />
                 </div>
                 <div>
                   <label htmlFor="businessName" className="block text-xs font-bold uppercase tracking-wider text-brand-slate mb-1.5">
-                    Business Name <span className="text-brand-emerald">*</span>
+                    Business Name <span className="text-brand-primary">*</span>
                   </label>
                   <input 
                     type="text" 
@@ -104,7 +104,7 @@ export default function QuoteForm() {
                     value={businessName}
                     onChange={(e) => setBusinessName(e.target.value)}
                     placeholder="e.g. Bondi Roasters Cafe" 
-                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-emerald focus:border-transparent text-sm font-medium transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-sm font-medium transition-all"
                   />
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default function QuoteForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="mobilePhone" className="block text-xs font-bold uppercase tracking-wider text-brand-slate mb-1.5">
-                    Australian Mobile <span className="text-brand-emerald">*</span>
+                    Australian Mobile <span className="text-brand-primary">*</span>
                   </label>
                   <input 
                     type="tel" 
@@ -122,12 +122,12 @@ export default function QuoteForm() {
                     value={mobilePhone}
                     onChange={(e) => setMobilePhone(e.target.value)}
                     placeholder="0412 345 678" 
-                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-emerald focus:border-transparent text-sm font-medium transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-sm font-medium transition-all"
                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-brand-slate mb-1.5">
-                    Business Email <span className="text-brand-emerald">*</span>
+                    Business Email <span className="text-brand-primary">*</span>
                   </label>
                   <input 
                     type="email" 
@@ -136,7 +136,7 @@ export default function QuoteForm() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="lachlan@bondiroasters.com.au" 
-                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-emerald focus:border-transparent text-sm font-medium transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-sm font-medium transition-all"
                   />
                 </div>
               </div>
@@ -156,12 +156,12 @@ export default function QuoteForm() {
                         onClick={() => toggleService(opt)}
                         className={`flex items-center gap-2 p-3 rounded-xl border text-xs font-semibold transition-all text-left ${
                           isChecked 
-                            ? 'border-brand-emerald bg-brand-emerald-light text-brand-emerald shadow-xs' 
+                            ? 'border-brand-primary bg-brand-primary-light text-brand-primary shadow-xs' 
                             : 'border-brand-border bg-slate-50 hover:bg-slate-100 text-slate-800'
                         }`}
                       >
                         <div className={`w-4 h-4 rounded flex items-center justify-center border ${
-                          isChecked ? 'bg-brand-emerald border-brand-emerald text-white' : 'border-slate-300 bg-white'
+                          isChecked ? 'bg-brand-primary border-brand-primary text-white' : 'border-slate-300 bg-white'
                         }`}>
                           {isChecked && <CheckCircle2 className="w-3.5 h-3.5" />}
                         </div>
@@ -187,12 +187,12 @@ export default function QuoteForm() {
                         onClick={() => setTurnover(opt.id)}
                         className={`flex flex-col items-center justify-center p-3 rounded-xl border text-center transition-all ${
                           isSelected 
-                            ? 'border-2 border-brand-emerald bg-brand-emerald-light text-brand-emerald shadow-xs' 
+                            ? 'border-2 border-brand-primary bg-brand-primary-light text-brand-primary shadow-xs' 
                             : 'border-brand-border bg-slate-50 hover:bg-slate-100 text-slate-800'
                         }`}
                       >
                         <span className="text-sm font-bold">{opt.label}</span>
-                        <span className={`text-[10px] font-normal mt-0.5 ${isSelected ? 'text-brand-emerald' : 'text-slate-500'}`}>
+                        <span className={`text-[10px] font-normal mt-0.5 ${isSelected ? 'text-brand-primary' : 'text-slate-500'}`}>
                           {opt.sub}
                         </span>
                       </button>
@@ -202,23 +202,23 @@ export default function QuoteForm() {
               </div>
 
               {/* Dynamic Estimated Savings Hint Banner */}
-              <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-brand-emerald-border rounded-xl p-4 flex items-center justify-between text-xs sm:text-sm">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-brand-primary-border rounded-xl p-4 flex items-center justify-between text-xs sm:text-sm">
                 <div className="flex items-center gap-2.5">
                   <span className="text-lg">💡</span>
-                  <span className="text-emerald-950 font-semibold">
+                  <span className="text-brand-navy font-semibold">
                     {getSavingsHint()}
                   </span>
                 </div>
-                <span className="text-brand-emerald font-bold hidden sm:inline whitespace-nowrap ml-2">
+                <span className="text-brand-primary font-bold hidden sm:inline whitespace-nowrap ml-2">
                   No exit fees
                 </span>
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Button in Brand Primary Blue */}
               <div className="pt-2">
                 <button 
                   type="submit" 
-                  className="w-full bg-brand-emerald hover:bg-brand-emerald-hover text-white text-base font-extrabold py-4 px-8 rounded-xl shadow-lg shadow-brand-emerald/30 hover:shadow-glow-emerald transition-all transform active:scale-[0.99] flex items-center justify-center gap-2"
+                  className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white text-base font-extrabold py-4 px-8 rounded-xl shadow-lg shadow-brand-primary/30 hover:shadow-glow-primary transition-all transform active:scale-[0.99] flex items-center justify-center gap-2"
                 >
                   <span>Get My Custom Quote</span>
                   <ArrowRight className="w-5 h-5" />
@@ -228,7 +228,7 @@ export default function QuoteForm() {
               {/* Microcopy */}
               <div className="text-center text-xs text-brand-muted font-medium pt-1 space-y-1">
                 <p className="flex items-center justify-center gap-1">
-                  <Lock className="w-3.5 h-3.5 text-brand-emerald" />
+                  <Lock className="w-3.5 h-3.5 text-brand-primary" />
                   <span>100% Secure & Confidential · No obligation · No lock-in contracts.</span>
                 </p>
                 <p className="text-slate-400">
@@ -240,7 +240,7 @@ export default function QuoteForm() {
           ) : (
             /* Success Feedback State */
             <div className="text-center py-12 space-y-4 animate-in fade-in duration-300">
-              <div className="w-16 h-16 rounded-full bg-brand-emerald-light text-brand-emerald mx-auto flex items-center justify-center shadow-inner">
+              <div className="w-16 h-16 rounded-full bg-brand-primary-light text-brand-primary mx-auto flex items-center justify-center shadow-inner">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h3 className="text-2xl font-black text-brand-navy">Quote Request Received!</h3>
@@ -250,7 +250,7 @@ export default function QuoteForm() {
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a 
                   href="tel:0283199500" 
-                  className="inline-flex items-center gap-2 text-sm font-bold text-brand-emerald hover:underline"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:underline"
                 >
                   <span>Need an immediate terminal? Call 02 8319 9500 now →</span>
                 </a>
@@ -270,4 +270,3 @@ export default function QuoteForm() {
     </section>
   );
 }
-

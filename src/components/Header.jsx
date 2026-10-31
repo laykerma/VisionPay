@@ -25,12 +25,12 @@ export default function Header() {
         <aside className="bg-brand-navy text-white text-xs sm:text-sm py-2 px-4 transition-all duration-300">
           <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 mx-auto text-center font-medium">
-              <span className="inline-flex items-center justify-center bg-brand-emerald/20 text-brand-emerald px-2 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-brand-emerald/30">
+              <span className="inline-flex items-center justify-center bg-brand-primary/20 text-brand-primary-border px-2 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-brand-primary/30">
                 Australian Special
               </span>
               <span className="text-slate-300">
                 Same-day settlement. No lock-in contracts. No monthly gateway fees.{' '}
-                <a href="#quote-section" className="text-white font-semibold underline decoration-brand-emerald underline-offset-4 hidden md:inline ml-1 hover:text-brand-emerald transition-colors">
+                <a href="#quote-section" className="text-white font-semibold underline decoration-brand-primary underline-offset-4 hidden md:inline ml-1 hover:text-brand-primary-border transition-colors">
                   Switch in days, not weeks.
                 </a>
               </span>
@@ -50,22 +50,16 @@ export default function Header() {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
           
-          {/* Brand Logo */}
-          <a href="#" className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-emerald rounded-lg p-1">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-navy via-brand-dark to-brand-slate flex items-center justify-center shadow-md shadow-brand-navy/15 group-hover:scale-105 transition-transform">
-              <svg className="w-6 h-6 text-brand-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                <polyline points="2 17 12 22 22 17"/>
-                <polyline points="2 12 12 17 22 12"/>
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-extrabold tracking-tight text-brand-navy flex items-center gap-1">
-                Vision<span className="text-brand-emerald">Pay</span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded ml-1">AU</span>
-              </span>
-              <span className="text-[10px] text-brand-muted tracking-tight -mt-1 font-medium">All-in-One Australian Payments</span>
-            </div>
+          {/* Brand Logo with Official Uploaded Logo Image */}
+          <a href="#" className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-brand-primary rounded-lg p-1">
+            <img 
+              src="/visionpay-logo.png" 
+              alt="VisionPay Logo" 
+              className="h-7 sm:h-8 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
+            <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary bg-brand-primary-light px-1.5 py-0.5 rounded border border-brand-primary-border">
+              AU
+            </span>
           </a>
 
           {/* Desktop Navigation */}
@@ -77,11 +71,11 @@ export default function Header() {
               onMouseLeave={() => setMegaMenuHover(false)}
             >
               <button 
-                className="flex items-center gap-1.5 text-sm font-semibold text-brand-slate hover:text-brand-navy focus:outline-none transition-colors"
+                className="flex items-center gap-1.5 text-sm font-semibold text-brand-slate hover:text-brand-primary focus:outline-none transition-colors"
                 onClick={() => setMegaMenuHover(!megaMenuHover)}
               >
                 Solutions
-                <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${megaMenuHover ? 'rotate-180 text-brand-emerald' : ''}`} />
+                <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${megaMenuHover ? 'rotate-180 text-brand-primary' : ''}`} />
               </button>
 
               {/* Dropdown Panel */}
@@ -90,7 +84,7 @@ export default function Header() {
               }`}>
                 <div className="flex items-center justify-between border-b border-brand-border pb-3 mb-4">
                   <span className="text-xs font-bold uppercase tracking-wider text-brand-muted">Unified Payment Solutions</span>
-                  <span className="text-xs font-medium text-brand-emerald bg-brand-emerald-light px-2.5 py-0.5 rounded-full border border-brand-emerald-border">
+                  <span className="text-xs font-semibold text-brand-primary bg-brand-primary-light px-2.5 py-0.5 rounded-full border border-brand-primary-border">
                     Same-day settlement included
                   </span>
                 </div>
@@ -98,12 +92,12 @@ export default function Header() {
                 <div className="grid grid-cols-2 gap-4">
                   {/* Online Payments */}
                   <a href="#solutions-grid" onClick={() => setMegaMenuHover(false)} className="flex items-start gap-3.5 p-3 rounded-xl hover:bg-brand-light transition-colors group/item">
-                    <div className="w-10 h-10 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center shrink-0 group-hover/item:bg-brand-blue group-hover/item:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-lg bg-brand-primary-light text-brand-primary flex items-center justify-center shrink-0 group-hover/item:bg-brand-primary group-hover/item:text-white transition-colors">
                       <Laptop className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-emerald">Online Payments</span>
+                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">Online Payments</span>
                         <span className="text-[10px] font-semibold bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded">$0 Fee</span>
                       </div>
                       <p className="text-xs text-brand-muted mt-0.5">Plug & play gateway plugins for WooCommerce, Shopify & custom APIs.</p>
@@ -112,12 +106,12 @@ export default function Header() {
 
                   {/* In-Store EFTPOS */}
                   <a href="#solutions-grid" onClick={() => setMegaMenuHover(false)} className="flex items-start gap-3.5 p-3 rounded-xl hover:bg-brand-light transition-colors group/item">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-50 text-brand-emerald flex items-center justify-center shrink-0 group-hover/item:bg-brand-emerald group-hover/item:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-lg bg-brand-primary-light text-brand-primary flex items-center justify-center shrink-0 group-hover/item:bg-brand-primary group-hover/item:text-white transition-colors">
                       <CreditCard className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-emerald">In-Store EFTPOS</span>
+                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">In-Store EFTPOS</span>
                         <span className="text-[10px] font-semibold bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded">PAX A920</span>
                       </div>
                       <p className="text-xs text-brand-muted mt-0.5">Standalone or cloud-integrated smart terminals with 2-day delivery.</p>
@@ -131,7 +125,7 @@ export default function Header() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-emerald">VisionPay POS</span>
+                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">VisionPay POS</span>
                         <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded uppercase">NEW</span>
                       </div>
                       <p className="text-xs text-brand-muted mt-0.5">$0 monthly software fee POS with free menu/inventory setup.</p>
@@ -144,7 +138,7 @@ export default function Header() {
                       <LinkIcon className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-emerald">Payment Links</span>
+                      <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">Payment Links</span>
                       <p className="text-xs text-brand-muted mt-0.5">Send custom SMS & email pay-links for instant tap-to-pay clearance.</p>
                     </div>
                   </a>
@@ -155,7 +149,7 @@ export default function Header() {
                       <ShieldCheck className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-emerald">Fraud Protection</span>
+                      <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">Fraud Protection</span>
                       <p className="text-xs text-brand-muted mt-0.5">3DS2 automated liability shift with smart AI risk decisioning.</p>
                     </div>
                   </a>
@@ -167,7 +161,7 @@ export default function Header() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-emerald">Gift Cards</span>
+                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">Gift Cards</span>
                         <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded uppercase">NEW</span>
                       </div>
                       <p className="text-xs text-brand-muted mt-0.5">Digital & physical cards via GiftPilot for retail & corporate perks.</p>
@@ -177,23 +171,23 @@ export default function Header() {
 
                 <div className="mt-4 pt-3 border-t border-brand-border flex items-center justify-between bg-brand-light -mx-6 -mb-6 px-6 py-3 rounded-b-2xl">
                   <span className="text-xs text-slate-500">Need advice on hardware or custom rate comparison?</span>
-                  <a href="#quote-section" onClick={() => setMegaMenuHover(false)} className="text-xs font-bold text-brand-emerald hover:text-brand-emerald-hover flex items-center gap-1">
+                  <a href="#quote-section" onClick={() => setMegaMenuHover(false)} className="text-xs font-bold text-brand-primary hover:underline flex items-center gap-1">
                     Calculate your custom rate <ArrowRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
             </div>
 
-            <a href="#integrations-section" className="text-sm font-semibold text-brand-slate hover:text-brand-navy transition-colors">Integrations</a>
-            <a href="#partners-section" className="text-sm font-semibold text-brand-slate hover:text-brand-navy transition-colors">Partners</a>
-            <a href="#contact-footer" className="text-sm font-semibold text-brand-slate hover:text-brand-navy transition-colors">Contact</a>
+            <a href="#integrations-section" className="text-sm font-semibold text-brand-slate hover:text-brand-primary transition-colors">Integrations</a>
+            <a href="#partners-section" className="text-sm font-semibold text-brand-slate hover:text-brand-primary transition-colors">Partners</a>
+            <a href="#contact-footer" className="text-sm font-semibold text-brand-slate hover:text-brand-primary transition-colors">Contact</a>
           </nav>
 
           {/* Right Action Items */}
           <div className="flex items-center gap-4 sm:gap-6">
             {/* Click-to-call Phone */}
-            <a href="tel:0283199500" className="hidden sm:flex items-center gap-2 text-sm font-bold text-brand-navy hover:text-brand-emerald transition-colors py-1.5 px-2.5 rounded-lg hover:bg-brand-light">
-              <div className="w-7 h-7 rounded-full bg-brand-emerald/10 text-brand-emerald flex items-center justify-center">
+            <a href="tel:0283199500" className="hidden sm:flex items-center gap-2 text-sm font-bold text-brand-navy hover:text-brand-primary transition-colors py-1.5 px-2.5 rounded-lg hover:bg-brand-light">
+              <div className="w-7 h-7 rounded-full bg-brand-primary-light text-brand-primary flex items-center justify-center">
                 <Phone className="w-3.5 h-3.5" />
               </div>
               <span className="tracking-tight">02 8319 9500</span>
@@ -204,8 +198,8 @@ export default function Header() {
               Log in
             </a>
 
-            {/* Sticky Primary CTA */}
-            <a href="#quote-section" className="inline-flex items-center justify-center gap-2 bg-brand-emerald hover:bg-brand-emerald-hover text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-md shadow-brand-emerald/25 hover:shadow-glow-emerald transition-all transform active:scale-95">
+            {/* Sticky Primary CTA in Brand Primary Blue */}
+            <a href="#quote-section" className="inline-flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-md shadow-brand-primary/25 hover:shadow-glow-primary transition-all transform active:scale-95">
               <span>Get a Quote</span>
               <ArrowRight className="w-4 h-4" />
             </a>
@@ -234,10 +228,10 @@ export default function Header() {
             </div>
             <div className="flex flex-col gap-3 pt-2">
               <a href="tel:0283199500" className="flex items-center justify-center gap-2 py-2.5 rounded-lg border border-brand-border text-brand-navy font-bold text-sm">
-                <Phone className="w-4 h-4 text-brand-emerald" />
+                <Phone className="w-4 h-4 text-brand-primary" />
                 <span>Call 02 8319 9500</span>
               </a>
-              <a href="#quote-section" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-brand-emerald text-white font-bold text-sm shadow-md">
+              <a href="#quote-section" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-brand-primary text-white font-bold text-sm shadow-md">
                 <span>Get a Quote in 1 Day</span>
               </a>
             </div>
@@ -247,4 +241,3 @@ export default function Header() {
     </>
   );
 }
-

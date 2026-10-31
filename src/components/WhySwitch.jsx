@@ -5,19 +5,19 @@ export default function WhySwitch() {
   const pillars = [
     {
       icon: DollarSign,
-      iconColor: 'text-brand-emerald group-hover:bg-brand-emerald group-hover:text-white',
+      iconColor: 'text-brand-primary group-hover:bg-brand-primary group-hover:text-white',
       title: '1. Your money sooner',
       description: 'Same-day settlement every single day. No waiting until Tuesday for your Friday or Saturday weekend takings.',
     },
     {
       icon: Percent,
-      iconColor: 'text-brand-blue group-hover:bg-brand-blue group-hover:text-white',
+      iconColor: 'text-blue-600 group-hover:bg-blue-600 group-hover:text-white',
       title: '2. Low fees, no surprises',
       description: 'Zero monthly gateway fees, zero maintenance charges, and clear interchange-plus or simple flat rate options.',
     },
     {
       icon: Unlock,
-      iconColor: 'text-brand-emerald group-hover:bg-brand-emerald group-hover:text-white',
+      iconColor: 'text-brand-primary group-hover:bg-brand-primary group-hover:text-white',
       title: '3. No lock-in contracts',
       description: 'We earn your partnership month by month. If you aren’t thrilled, cancel at any time with no penalties.',
     },
@@ -40,7 +40,7 @@ export default function WhySwitch() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-emerald bg-brand-emerald-light px-3 py-1 rounded-full border border-brand-emerald-border">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-primary bg-brand-primary-light px-3 py-1 rounded-full border border-brand-primary-border">
             The VisionPay Advantage
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-3">
@@ -58,7 +58,7 @@ export default function WhySwitch() {
             return (
               <div 
                 key={idx}
-                className="bg-brand-light rounded-2xl p-6 border border-brand-border hover:border-brand-emerald transition-all hover:-translate-y-1 group"
+                className="bg-brand-light rounded-2xl p-6 border border-brand-border hover:border-brand-primary transition-all hover:-translate-y-1 group"
               >
                 <div className={`w-12 h-12 rounded-xl bg-white shadow-xs flex items-center justify-center mb-5 transition-colors ${pillar.iconColor}`}>
                   <IconComponent className="w-6 h-6" />
@@ -76,4 +76,3 @@ export default function WhySwitch() {
     </section>
   );
 }
-
