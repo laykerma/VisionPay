@@ -29,19 +29,20 @@ The optimized production bundle will be generated in `dist/`.
 
 ```
 src/
-├── App.jsx                     # Master container with 3-way routing (Home, EFTPOS, Gateway)
+├── App.jsx                     # Master container with 4-way routing (Home, EFTPOS, Gateway, Links)
 ├── main.jsx                    # React entry point
 ├── index.css                   # Tailwind base directives & custom keyframes
 ├── pages/
-│   ├── HomePage.jsx            # All-in-One Australian Payments Ecosystem
+│   ├── HomePage.jsx            # All-in-One Australian Payments Ecosystem (/)
 │   ├── InStorePaymentsPage.jsx # In-Store Payments & EFTPOS PAX A920 (/instore-payments/)
-│   └── PaymentGatewayPage.jsx  # Online Payments & Gateway (/payment-gateway/)
+│   ├── PaymentGatewayPage.jsx  # Online Payments & Gateway ($0 Fee) (/payment-gateway/)
+│   └── PaymentLinksPage.jsx    # Australian Payment Links via SMS & Email (/payment-link/)
 └── components/
-    ├── Header.jsx              # Logo, 3-way switcher, mega-menu, phone link & CTA
+    ├── Header.jsx              # Logo, 4-way switcher, mega-menu, phone link & CTA
     ├── Hero.jsx                # Hero with 3D PAX A920 contactless tap simulation
     ├── SocialProof.jsx         # 4 trust badges (Same-day, 5.0 Google stars, 0 lock-in, 24/7 Aussie)
     ├── SameDaySettlement.jsx   # Dark navy highlight band, 3 stat tiles & bank logos
-    ├── SolutionsGrid.jsx       # 3x2 Bento grid for all 6 core product verticals
+    ├── SolutionsGrid.jsx       # 3x2 Bento grid with direct routing for all core verticals
     ├── WhySwitch.jsx           # 5 value pillar benefit cards
     ├── HowItWorks.jsx          # 3-step horizontal onboarding timeline
     ├── Testimonials.jsx        # ElitePOS, PracShield, Storebase + live Google Reviews
@@ -53,8 +54,9 @@ src/
 
 ## 🇦🇺 Brand Identity & Key Features
 
-* **Palette:** Deep Trustworthy Navy (`#0B132B`, `#0F172A`), Crisp White, Slate Card Surfaces (`#F8FAFC`), and High-Conversion Emerald (`#059669`).
+* **Official Brand Identity:** Royal Electric Blue (`#203AE7`) extracted directly from the official VisionPay brand logo, paired with Deep Slate/Navy (`#0B132B`, `#0F172A`), crisp white surfaces, and subtle slate borders (`#E2E8F0`).
 * **Interactive PAX A920 Terminal:** Click "Tap to Pay" on the hero mockup to simulate an instant NFC contactless transaction with receipt printing.
+* **Payment Links Showcase:** Interactive dual-state smartphone demo showing an SMS invoice notification transition into a frictionless checkout (Apple Pay / Google Pay / Card) with instant paid clearance.
 * **Dynamic Quote Savings Estimator:** Selecting monthly turnover dynamically calculates comparative annual savings against legacy Big Four banks.
-* **Mega-Menu Navigation:** Full 2-column overview of Online Gateway, EFTPOS, VisionPay POS, Payment Links, Fraud Shield, and Gift Cards.
+* **Mega-Menu Navigation & Quick Switcher:** 4-way pill switcher (`Ecosystem`, `EFTPOS`, `Gateway`, `Links`) + comprehensive 2-column mega-menu.
 

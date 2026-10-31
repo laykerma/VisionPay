@@ -4,11 +4,15 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import PaymentGatewayPage from './pages/PaymentGatewayPage';
 import InStorePaymentsPage from './pages/InStorePaymentsPage';
+import PaymentLinksPage from './pages/PaymentLinksPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(() => {
     const path = window.location.pathname.toLowerCase();
     const hash = window.location.hash.toLowerCase();
+    if (path.includes('payment-link') || hash.includes('payment-link') || hash.includes('link')) {
+      return 'links';
+    }
     if (path.includes('instore') || hash.includes('instore')) {
       return 'instore';
     }
@@ -22,7 +26,9 @@ export default function App() {
     const handlePopState = () => {
       const path = window.location.pathname.toLowerCase();
       const hash = window.location.hash.toLowerCase();
-      if (path.includes('instore') || hash.includes('instore')) {
+      if (path.includes('payment-link') || hash.includes('payment-link') || hash.includes('link')) {
+        setCurrentPage('links');
+      } else if (path.includes('instore') || hash.includes('instore')) {
         setCurrentPage('instore');
       } else if (path.includes('payment-gateway') || hash.includes('payment-gateway') || hash.includes('gateway')) {
         setCurrentPage('gateway');
@@ -41,13 +47,16 @@ export default function App() {
 
   const navigateTo = (page) => {
     setCurrentPage(page);
-    if (page === 'instore') {
+    if (page === 'links') {
+      window.history.pushState({}, '', '#/payment-link');
+    } else if (page === 'instore') {
       window.history.pushState({}, '', '#/instore-payments');
     } else if (page === 'gateway') {
       window.history.pushState({}, '', '#/payment-gateway');
     } else {
       window.history.pushState({}, '', '#/');
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -55,7 +64,9 @@ export default function App() {
       <Header currentPage={currentPage} onNavigate={navigateTo} />
       
       <main className="flex-grow">
-        {currentPage === 'instore' ? (
+        {currentPage === 'links' ? (
+          <PaymentLinksPage onNavigateHome={() => navigateTo('home')} />
+        ) : currentPage === 'instore' ? (
           <InStorePaymentsPage onNavigateHome={() => navigateTo('home')} />
         ) : currentPage === 'gateway' ? (
           <PaymentGatewayPage onNavigateHome={() => navigateTo('home')} />

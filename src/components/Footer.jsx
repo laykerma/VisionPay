@@ -18,6 +18,14 @@ export default function Footer({ onNavigate }) {
     }
   };
 
+  const handleLinksNav = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('links');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleHomeNav = (e) => {
     e.preventDefault();
     if (onNavigate) {
@@ -82,7 +90,11 @@ export default function Footer({ onNavigate }) {
                 </button>
               </li>
               <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">VisionPay Cloud POS</a></li>
-              <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">SMS & Email Payment Links</a></li>
+              <li>
+                <button onClick={handleLinksNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left font-semibold text-blue-300">
+                  Payment Links (SMS & Email) →
+                </button>
+              </li>
               <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">3DS2 Fraud Shield</a></li>
               <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">Digital Branded Gift Cards</a></li>
             </ul>

@@ -26,7 +26,7 @@ export default function SolutionsGrid({ onNavigate }) {
       ],
       tag: 'API & Cart Plugins',
       cta: 'Explore Online Gateway',
-      isGatewayPage: true,
+      pageKey: 'gateway',
     },
     {
       id: 'eftpos',
@@ -42,6 +42,7 @@ export default function SolutionsGrid({ onNavigate }) {
       ],
       tag: 'Fast 4G / Wi-Fi',
       cta: 'Order Terminals',
+      pageKey: 'instore',
     },
     {
       id: 'pos',
@@ -73,6 +74,7 @@ export default function SolutionsGrid({ onNavigate }) {
       ],
       tag: 'Instant Tap-to-Pay',
       cta: 'Create Links',
+      pageKey: 'links',
     },
     {
       id: 'fraud',
@@ -165,9 +167,9 @@ export default function SolutionsGrid({ onNavigate }) {
 
                 <div className="mt-6 pt-4 border-t border-brand-border flex items-center justify-between">
                   <span className="text-xs font-bold text-brand-navy">{item.tag}</span>
-                  {item.isGatewayPage && onNavigate ? (
+                  {item.pageKey && onNavigate ? (
                     <button 
-                      onClick={() => onNavigate('gateway')}
+                      onClick={() => onNavigate(item.pageKey)}
                       className="text-xs font-bold text-brand-primary group-hover:translate-x-1 transition-transform flex items-center gap-1 cursor-pointer"
                     >
                       <span>{item.cta}</span>

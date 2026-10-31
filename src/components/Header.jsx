@@ -45,12 +45,12 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 Australian Special
               </span>
               <span className="text-slate-300">
-                Same-day settlement · No lock-in contracts · Terminals delivered within 2 business days.{' '}
+                Same-day settlement · No lock-in contracts · $0 monthly gateway fees.{' '}
                 <button 
-                  onClick={() => handleNav('instore', '#terminal-quote')} 
+                  onClick={() => handleNav('links', '#link-quote')} 
                   className="text-white font-semibold underline decoration-brand-primary underline-offset-4 hidden md:inline ml-1 hover:text-brand-primary-border transition-colors cursor-pointer"
                 >
-                  Order Terminals →
+                  Create Payment Links →
                 </button>
               </span>
             </div>
@@ -85,29 +85,36 @@ export default function Header({ currentPage = 'home', onNavigate }) {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-5">
             
-            {/* Quick 3-Way Product View Switcher */}
-            <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-bold border border-slate-200 mr-2">
+            {/* Quick 4-Way Product View Switcher */}
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-bold border border-slate-200">
               <button
                 onClick={() => handleNav('home')}
-                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${currentPage === 'home' ? 'bg-white text-brand-navy shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+                className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${currentPage === 'home' ? 'bg-white text-brand-navy shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
               >
                 Ecosystem
               </button>
               <button
                 onClick={() => handleNav('instore')}
-                className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${currentPage === 'instore' ? 'bg-brand-primary text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+                className={`px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${currentPage === 'instore' ? 'bg-brand-primary text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
               >
-                <span>In-Store EFTPOS</span>
+                <span>EFTPOS</span>
                 <span className="text-[9px] font-extrabold uppercase px-1 py-0.2 rounded bg-white/20">PAX</span>
               </button>
               <button
                 onClick={() => handleNav('gateway')}
-                className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${currentPage === 'gateway' ? 'bg-brand-primary text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+                className={`px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${currentPage === 'gateway' ? 'bg-brand-primary text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
               >
-                <span>Online Gateway</span>
-                <span className="text-[9px] font-extrabold uppercase px-1 py-0.2 rounded bg-white/20">$0 Fee</span>
+                <span>Gateway</span>
+                <span className="text-[9px] font-extrabold uppercase px-1 py-0.2 rounded bg-white/20">$0</span>
+              </button>
+              <button
+                onClick={() => handleNav('links')}
+                className={`px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${currentPage === 'links' ? 'bg-brand-primary text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+              >
+                <span>Links</span>
+                <span className="text-[9px] font-extrabold uppercase px-1 py-0.2 rounded bg-white/20">SMS</span>
               </button>
             </div>
 
@@ -137,6 +144,23 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
+                  {/* Payment Links -> Navigates to links */}
+                  <button 
+                    onClick={() => handleNav('links')} 
+                    className="flex items-start gap-3.5 p-3 rounded-xl hover:bg-brand-light transition-colors group/item text-left w-full cursor-pointer"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-brand-primary-light text-brand-primary flex items-center justify-center shrink-0 group-hover/item:bg-brand-primary group-hover/item:text-white transition-colors">
+                      <LinkIcon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">Payment Links</span>
+                        <span className="text-[10px] font-bold bg-blue-100 text-brand-primary px-1.5 py-0.2 rounded">Fast SMS</span>
+                      </div>
+                      <p className="text-xs text-brand-muted mt-0.5">Send custom SMS & email pay-links for instant tap-to-pay clearance.</p>
+                    </div>
+                  </button>
+
                   {/* In-Store EFTPOS -> Navigates to instore */}
                   <button 
                     onClick={() => handleNav('instore')} 
@@ -188,20 +212,6 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                     </div>
                   </button>
 
-                  {/* Payment Links */}
-                  <button 
-                    onClick={() => handleNav('home', '#solutions-grid')} 
-                    className="flex items-start gap-3.5 p-3 rounded-xl hover:bg-brand-light transition-colors group/item text-left w-full cursor-pointer"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-amber-50 text-brand-amber flex items-center justify-center shrink-0 group-hover/item:bg-brand-amber group-hover/item:text-white transition-colors">
-                      <LinkIcon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">Payment Links</span>
-                      <p className="text-xs text-brand-muted mt-0.5">Send custom SMS & email pay-links for instant tap-to-pay clearance.</p>
-                    </div>
-                  </button>
-
                   {/* Fraud Protection */}
                   <button 
                     onClick={() => handleNav('gateway', '#api-showcase')} 
@@ -235,12 +245,12 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-brand-border flex items-center justify-between bg-brand-light -mx-6 -mb-6 px-6 py-3 rounded-b-2xl">
-                  <span className="text-xs text-slate-500">Need advice on hardware or custom rate comparison?</span>
+                  <span className="text-xs text-slate-500">Need custom invoice rate comparison or API docs?</span>
                   <button 
-                    onClick={() => handleNav(currentPage, '#quote-section')} 
+                    onClick={() => handleNav('links', '#link-quote')} 
                     className="text-xs font-bold text-brand-primary hover:underline flex items-center gap-1 cursor-pointer"
                   >
-                    Calculate your custom rate <ArrowRight className="w-3.5 h-3.5" />
+                    Calculate your rate <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
@@ -287,6 +297,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 let targetId = '#quote-section';
                 if (currentPage === 'instore') targetId = '#terminal-quote';
                 if (currentPage === 'gateway') targetId = '#gateway-quote';
+                if (currentPage === 'links') targetId = '#link-quote';
                 handleNav(currentPage, targetId);
               }} 
               className="inline-flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-md shadow-brand-primary/25 hover:shadow-glow-primary transition-all transform active:scale-95 cursor-pointer"
@@ -309,39 +320,45 @@ export default function Header({ currentPage = 'home', onNavigate }) {
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-brand-border bg-white px-4 py-6 space-y-4 shadow-lg animate-in fade-in duration-150">
-            <div className="flex items-center gap-2 pb-3 border-b border-brand-border">
+            <div className="grid grid-cols-4 gap-1 pb-3 border-b border-brand-border">
               <button 
                 onClick={() => handleNav('home')} 
-                className={`flex-1 py-2 rounded-lg text-xs font-bold ${currentPage === 'home' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+                className={`py-1.5 rounded-lg text-[11px] font-bold text-center ${currentPage === 'home' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
               >
                 Ecosystem
               </button>
               <button 
                 onClick={() => handleNav('instore')} 
-                className={`flex-1 py-2 rounded-lg text-xs font-bold ${currentPage === 'instore' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+                className={`py-1.5 rounded-lg text-[11px] font-bold text-center ${currentPage === 'instore' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
               >
                 EFTPOS
               </button>
               <button 
                 onClick={() => handleNav('gateway')} 
-                className={`flex-1 py-2 rounded-lg text-xs font-bold ${currentPage === 'gateway' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+                className={`py-1.5 rounded-lg text-[11px] font-bold text-center ${currentPage === 'gateway' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
               >
-                Online
+                Gateway
+              </button>
+              <button 
+                onClick={() => handleNav('links')} 
+                className={`py-1.5 rounded-lg text-[11px] font-bold text-center ${currentPage === 'links' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+              >
+                Links
               </button>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-sm font-semibold pb-4 border-b border-brand-border">
-              <button onClick={() => handleNav('instore')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-primary font-bold">
-                In-Store EFTPOS →
+              <button onClick={() => handleNav('links')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-primary font-bold">
+                Payment Links →
               </button>
-              <button onClick={() => handleNav('gateway')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-primary font-bold">
-                Online Gateway →
+              <button onClick={() => handleNav('instore')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
+                In-Store EFTPOS
+              </button>
+              <button onClick={() => handleNav('gateway')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
+                Online Gateway
               </button>
               <button onClick={() => handleNav('home', '#solutions-grid')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
                 VisionPay POS
-              </button>
-              <button onClick={() => handleNav('home', '#solutions-grid')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
-                Payment Links
               </button>
               <button onClick={() => handleNav('gateway', '#api-showcase')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
                 Developer API
@@ -361,6 +378,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                   let targetId = '#quote-section';
                   if (currentPage === 'instore') targetId = '#terminal-quote';
                   if (currentPage === 'gateway') targetId = '#gateway-quote';
+                  if (currentPage === 'links') targetId = '#link-quote';
                   handleNav(currentPage, targetId);
                 }} 
                 className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-brand-primary text-white font-bold text-sm shadow-md"

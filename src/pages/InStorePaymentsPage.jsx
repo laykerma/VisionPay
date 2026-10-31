@@ -920,3 +920,4 @@ export default function InStorePaymentsPage({ onNavigateHome }) {
     </div>
   );
 }
+
