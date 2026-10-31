@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.perspective-mockup {
+  perspective: 1200px;
+}
+
+.tilt-terminal {
+  transform: rotateY(-8deg) rotateX(6deg) rotateZ(-1deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-terminal:hover {
+  transform: rotateY(-2deg) rotateX(2deg) rotateZ(0deg) translateY(-6px);
+}
+
+@keyframes ping-slow {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-pulse-ring {
+  animation: ping-slow 2.8s infinite ease-in-out;
+}
+
