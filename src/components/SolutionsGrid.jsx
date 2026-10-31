@@ -10,9 +10,10 @@ import {
   ArrowRight 
 } from 'lucide-react';
 
-export default function SolutionsGrid() {
+export default function SolutionsGrid({ onNavigate }) {
   const solutions = [
     {
+      id: 'gateway',
       icon: Laptop,
       iconBg: 'bg-brand-primary-light text-brand-primary group-hover:bg-brand-primary group-hover:text-white',
       badge: '$0 Monthly Fee',
@@ -24,9 +25,11 @@ export default function SolutionsGrid() {
         'Tokenized 1-click checkout & recurring billing',
       ],
       tag: 'API & Cart Plugins',
-      cta: 'Explore Online',
+      cta: 'Explore Online Gateway',
+      isGatewayPage: true,
     },
     {
+      id: 'eftpos',
       icon: CreditCard,
       iconBg: 'bg-brand-primary-light text-brand-primary group-hover:bg-brand-primary group-hover:text-white',
       badge: 'PAX A920 Hardware',
@@ -41,6 +44,7 @@ export default function SolutionsGrid() {
       cta: 'Order Terminals',
     },
     {
+      id: 'pos',
       icon: Store,
       iconBg: 'bg-purple-50 text-purple-600 group-hover:bg-purple-600 group-hover:text-white',
       badge: 'NEW RELEASE',
@@ -56,6 +60,7 @@ export default function SolutionsGrid() {
       cta: 'See POS Demo',
     },
     {
+      id: 'links',
       icon: LinkIcon,
       iconBg: 'bg-amber-50 text-brand-amber group-hover:bg-brand-amber group-hover:text-white',
       badge: 'No Website Needed',
@@ -70,6 +75,7 @@ export default function SolutionsGrid() {
       cta: 'Create Links',
     },
     {
+      id: 'fraud',
       icon: ShieldCheck,
       iconBg: 'bg-teal-50 text-teal-600 group-hover:bg-teal-600 group-hover:text-white',
       badge: '3DS2 Liability Shift',
@@ -84,6 +90,7 @@ export default function SolutionsGrid() {
       cta: 'Fraud Shield Details',
     },
     {
+      id: 'gift',
       icon: Gift,
       iconBg: 'bg-rose-50 text-rose-600 group-hover:bg-rose-600 group-hover:text-white',
       badge: 'GIFT PILOT',
@@ -158,13 +165,23 @@ export default function SolutionsGrid() {
 
                 <div className="mt-6 pt-4 border-t border-brand-border flex items-center justify-between">
                   <span className="text-xs font-bold text-brand-navy">{item.tag}</span>
-                  <a 
-                    href="#quote-section" 
-                    className="text-xs font-bold text-brand-primary group-hover:translate-x-1 transition-transform flex items-center gap-1"
-                  >
-                    <span>{item.cta}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  {item.isGatewayPage && onNavigate ? (
+                    <button 
+                      onClick={() => onNavigate('gateway')}
+                      className="text-xs font-bold text-brand-primary group-hover:translate-x-1 transition-transform flex items-center gap-1 cursor-pointer"
+                    >
+                      <span>{item.cta}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  ) : (
+                    <a 
+                      href="#quote-section" 
+                      className="text-xs font-bold text-brand-primary group-hover:translate-x-1 transition-transform flex items-center gap-1"
+                    >
+                      <span>{item.cta}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
                 </div>
               </div>
             );

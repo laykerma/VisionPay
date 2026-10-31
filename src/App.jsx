@@ -1,31 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import SocialProof from './components/SocialProof';
-import SameDaySettlement from './components/SameDaySettlement';
-import SolutionsGrid from './components/SolutionsGrid';
-import WhySwitch from './components/WhySwitch';
-import HowItWorks from './components/HowItWorks';
-import Testimonials from './components/Testimonials';
-import QuoteForm from './components/QuoteForm';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import PaymentGatewayPage from './pages/PaymentGatewayPage';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState(() => {
+    const path = window.location.pathname.toLowerCase();
+    const hash = window.location.hash.toLowerCase();
+    if (path.includes('payment-gateway') || hash.includes('payment-gateway')) {
+      return 'gateway';
+    }
+    return 'home';
+  });
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      if (path.includes('payment-gateway') || hash.includes('payment-gateway')) {
+        setCurrentPage('gateway');
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
+    };
+  }, []);
+
+  const navigateTo = (page) => {
+    setCurrentPage(page);
+    if (page === 'gateway') {
+      window.history.pushState({}, '', '#/payment-gateway');
+    } else {
+      window.history.pushState({}, '', '#/');
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white text-brand-dark flex flex-col">
-      <Header />
+    <div className="min-h-screen bg-white text-brand-dark flex flex-col font-sans selection:bg-brand-primary-light selection:text-brand-primary">
+      <Header currentPage={currentPage} onNavigate={navigateTo} />
+      
       <main className="flex-grow">
-        <Hero />
-        <SocialProof />
-        <SameDaySettlement />
-        <SolutionsGrid />
-        <WhySwitch />
-        <HowItWorks />
-        <Testimonials />
-        <QuoteForm />
+        {currentPage === 'gateway' ? (
+          <PaymentGatewayPage onNavigateHome={() => navigateTo('home')} />
+        ) : (
+          <HomePage onNavigate={navigateTo} />
+        )}
       </main>
-      <Footer />
+
+      <Footer onNavigate={navigateTo} />
     </div>
   );
 }
-

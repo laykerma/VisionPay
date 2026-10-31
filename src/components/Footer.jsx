@@ -1,7 +1,23 @@
 import React from 'react';
 import { Phone, MapPin, ShieldCheck } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
+  const handleGatewayNav = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('gateway');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleHomeNav = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer id="contact-footer" className="bg-brand-navy text-slate-300 pt-16 pb-12 border-t border-slate-800 text-xs sm:text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,7 +27,7 @@ export default function Footer() {
           
           {/* Company Bio & Contact Info */}
           <div className="lg:col-span-2 space-y-4">
-            <a href="#" className="flex items-center gap-3">
+            <button onClick={handleHomeNav} className="flex items-center gap-3 text-left cursor-pointer">
               <img 
                 src="/visionpay-logo-white.png" 
                 alt="VisionPay Logo" 
@@ -20,7 +36,7 @@ export default function Footer() {
               <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300 bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">
                 AU
               </span>
-            </a>
+            </button>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Australia’s independent, all-in-one payment ecosystem. Empowering local merchants with same-day settlements, low transparent interchange fees, and cutting-edge hardware.
             </p>
@@ -47,7 +63,11 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Payment Solutions</h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
-              <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">Online Gateway ($0 Fee)</a></li>
+              <li>
+                <button onClick={handleGatewayNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left font-semibold text-blue-300">
+                  Online Gateway ($0 Fee) →
+                </button>
+              </li>
               <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">In-Store EFTPOS PAX A920</a></li>
               <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">VisionPay Cloud POS</a></li>
               <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">SMS & Email Payment Links</a></li>
@@ -60,10 +80,14 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Developers & ISVs</h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
-              <li><a href="#" className="hover:text-blue-400 transition-colors">REST API Reference</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">WooCommerce Plugin</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Shopify Hosted Checkout</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Developer Sandbox</a></li>
+              <li>
+                <button onClick={handleGatewayNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left">
+                  REST API Reference
+                </button>
+              </li>
+              <li><button onClick={handleGatewayNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left">WooCommerce Plugin</button></li>
+              <li><button onClick={handleGatewayNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left">Shopify Hosted Checkout</button></li>
+              <li><button onClick={handleGatewayNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left">Developer Sandbox</button></li>
               <li><a href="#" className="hover:text-blue-400 transition-colors">Webhook Documentation</a></li>
               <li><a href="#" className="hover:text-blue-400 transition-colors">SDKs (Node, PHP, Python)</a></li>
             </ul>
