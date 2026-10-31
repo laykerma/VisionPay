@@ -2,6 +2,14 @@ import React from 'react';
 import { Phone, MapPin, ShieldCheck } from 'lucide-react';
 
 export default function Footer({ onNavigate }) {
+  const handleInStoreNav = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('instore');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleGatewayNav = (e) => {
     e.preventDefault();
     if (onNavigate) {
@@ -64,11 +72,15 @@ export default function Footer({ onNavigate }) {
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Payment Solutions</h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
+                <button onClick={handleInStoreNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left font-semibold text-blue-300">
+                  In-Store EFTPOS (PAX A920) →
+                </button>
+              </li>
+              <li>
                 <button onClick={handleGatewayNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left font-semibold text-blue-300">
                   Online Gateway ($0 Fee) →
                 </button>
               </li>
-              <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">In-Store EFTPOS PAX A920</a></li>
               <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">VisionPay Cloud POS</a></li>
               <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">SMS & Email Payment Links</a></li>
               <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">3DS2 Fraud Shield</a></li>

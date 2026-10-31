@@ -3,12 +3,16 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import PaymentGatewayPage from './pages/PaymentGatewayPage';
+import InStorePaymentsPage from './pages/InStorePaymentsPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(() => {
     const path = window.location.pathname.toLowerCase();
     const hash = window.location.hash.toLowerCase();
-    if (path.includes('payment-gateway') || hash.includes('payment-gateway')) {
+    if (path.includes('instore') || hash.includes('instore')) {
+      return 'instore';
+    }
+    if (path.includes('payment-gateway') || hash.includes('payment-gateway') || hash.includes('gateway')) {
       return 'gateway';
     }
     return 'home';
@@ -18,7 +22,9 @@ export default function App() {
     const handlePopState = () => {
       const path = window.location.pathname.toLowerCase();
       const hash = window.location.hash.toLowerCase();
-      if (path.includes('payment-gateway') || hash.includes('payment-gateway')) {
+      if (path.includes('instore') || hash.includes('instore')) {
+        setCurrentPage('instore');
+      } else if (path.includes('payment-gateway') || hash.includes('payment-gateway') || hash.includes('gateway')) {
         setCurrentPage('gateway');
       } else {
         setCurrentPage('home');
@@ -35,7 +41,9 @@ export default function App() {
 
   const navigateTo = (page) => {
     setCurrentPage(page);
-    if (page === 'gateway') {
+    if (page === 'instore') {
+      window.history.pushState({}, '', '#/instore-payments');
+    } else if (page === 'gateway') {
       window.history.pushState({}, '', '#/payment-gateway');
     } else {
       window.history.pushState({}, '', '#/');
@@ -47,7 +55,9 @@ export default function App() {
       <Header currentPage={currentPage} onNavigate={navigateTo} />
       
       <main className="flex-grow">
-        {currentPage === 'gateway' ? (
+        {currentPage === 'instore' ? (
+          <InStorePaymentsPage onNavigateHome={() => navigateTo('home')} />
+        ) : currentPage === 'gateway' ? (
           <PaymentGatewayPage onNavigateHome={() => navigateTo('home')} />
         ) : (
           <HomePage onNavigate={navigateTo} />

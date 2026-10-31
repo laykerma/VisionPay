@@ -45,18 +45,18 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 Australian Special
               </span>
               <span className="text-slate-300">
-                Same-day settlement. No lock-in contracts. No monthly gateway fees.{' '}
+                Same-day settlement · No lock-in contracts · Terminals delivered within 2 business days.{' '}
                 <button 
-                  onClick={() => handleNav('gateway', '#gateway-quote')} 
+                  onClick={() => handleNav('instore', '#terminal-quote')} 
                   className="text-white font-semibold underline decoration-brand-primary underline-offset-4 hidden md:inline ml-1 hover:text-brand-primary-border transition-colors cursor-pointer"
                 >
-                  Explore Online Gateway →
+                  Order Terminals →
                 </button>
               </span>
             </div>
             <button 
               onClick={() => setShowAnnouncement(false)} 
-              className="text-slate-400 hover:text-white p-1 rounded transition-colors"
+              className="text-slate-400 hover:text-white p-1 rounded transition-colors cursor-pointer"
               aria-label="Close announcement"
             >
               <X className="w-4 h-4" />
@@ -87,17 +87,24 @@ export default function Header({ currentPage = 'home', onNavigate }) {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
             
-            {/* Quick Home / Gateway View Switcher */}
+            {/* Quick 3-Way Product View Switcher */}
             <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-bold border border-slate-200 mr-2">
               <button
                 onClick={() => handleNav('home')}
-                className={`px-3 py-1.5 rounded-lg transition-all ${currentPage === 'home' ? 'bg-white text-brand-navy shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${currentPage === 'home' ? 'bg-white text-brand-navy shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
               >
-                All-in-One Ecosystem
+                Ecosystem
+              </button>
+              <button
+                onClick={() => handleNav('instore')}
+                className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${currentPage === 'instore' ? 'bg-brand-primary text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+              >
+                <span>In-Store EFTPOS</span>
+                <span className="text-[9px] font-extrabold uppercase px-1 py-0.2 rounded bg-white/20">PAX</span>
               </button>
               <button
                 onClick={() => handleNav('gateway')}
-                className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${currentPage === 'gateway' ? 'bg-brand-primary text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+                className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${currentPage === 'gateway' ? 'bg-brand-primary text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
               >
                 <span>Online Gateway</span>
                 <span className="text-[9px] font-extrabold uppercase px-1 py-0.2 rounded bg-white/20">$0 Fee</span>
@@ -111,7 +118,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
               onMouseLeave={() => setMegaMenuHover(false)}
             >
               <button 
-                className="flex items-center gap-1.5 text-sm font-semibold text-brand-slate hover:text-brand-primary focus:outline-none transition-colors"
+                className="flex items-center gap-1.5 text-sm font-semibold text-brand-slate hover:text-brand-primary focus:outline-none transition-colors cursor-pointer"
                 onClick={() => setMegaMenuHover(!megaMenuHover)}
               >
                 Solutions
@@ -130,7 +137,24 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
-                  {/* Online Payments - Click opens the Payment Gateway Page */}
+                  {/* In-Store EFTPOS -> Navigates to instore */}
+                  <button 
+                    onClick={() => handleNav('instore')} 
+                    className="flex items-start gap-3.5 p-3 rounded-xl hover:bg-brand-light transition-colors group/item text-left w-full cursor-pointer"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-brand-primary-light text-brand-primary flex items-center justify-center shrink-0 group-hover/item:bg-brand-primary group-hover/item:text-white transition-colors">
+                      <CreditCard className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">In-Store EFTPOS</span>
+                        <span className="text-[10px] font-semibold bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded">PAX A920</span>
+                      </div>
+                      <p className="text-xs text-brand-muted mt-0.5">Standalone or cloud-integrated smart terminals with 2-day delivery.</p>
+                    </div>
+                  </button>
+
+                  {/* Online Payments -> Navigates to gateway */}
                   <button 
                     onClick={() => handleNav('gateway')} 
                     className="flex items-start gap-3.5 p-3 rounded-xl hover:bg-brand-light transition-colors group/item text-left w-full cursor-pointer"
@@ -144,23 +168,6 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                         <span className="text-[10px] font-semibold bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded">$0 Fee</span>
                       </div>
                       <p className="text-xs text-brand-muted mt-0.5">Plug & play gateway plugins for WooCommerce, Shopify & custom APIs.</p>
-                    </div>
-                  </button>
-
-                  {/* In-Store EFTPOS */}
-                  <button 
-                    onClick={() => handleNav('home', '#solutions-grid')} 
-                    className="flex items-start gap-3.5 p-3 rounded-xl hover:bg-brand-light transition-colors group/item text-left w-full cursor-pointer"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-brand-primary-light text-brand-primary flex items-center justify-center shrink-0 group-hover/item:bg-brand-primary group-hover/item:text-white transition-colors">
-                      <CreditCard className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">In-Store EFTPOS</span>
-                        <span className="text-[10px] font-semibold bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded">PAX A920</span>
-                      </div>
-                      <p className="text-xs text-brand-muted mt-0.5">Standalone or cloud-integrated smart terminals with 2-day delivery.</p>
                     </div>
                   </button>
 
@@ -230,7 +237,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 <div className="mt-4 pt-3 border-t border-brand-border flex items-center justify-between bg-brand-light -mx-6 -mb-6 px-6 py-3 rounded-b-2xl">
                   <span className="text-xs text-slate-500">Need advice on hardware or custom rate comparison?</span>
                   <button 
-                    onClick={() => handleNav('gateway', '#gateway-quote')} 
+                    onClick={() => handleNav(currentPage, '#quote-section')} 
                     className="text-xs font-bold text-brand-primary hover:underline flex items-center gap-1 cursor-pointer"
                   >
                     Calculate your custom rate <ArrowRight className="w-3.5 h-3.5" />
@@ -274,9 +281,14 @@ export default function Header({ currentPage = 'home', onNavigate }) {
               Log in
             </a>
 
-            {/* Sticky Primary CTA in Brand Primary Blue */}
+            {/* Sticky Primary CTA */}
             <button 
-              onClick={() => handleNav(currentPage, currentPage === 'gateway' ? '#gateway-quote' : '#quote-section')} 
+              onClick={() => {
+                let targetId = '#quote-section';
+                if (currentPage === 'instore') targetId = '#terminal-quote';
+                if (currentPage === 'gateway') targetId = '#gateway-quote';
+                handleNav(currentPage, targetId);
+              }} 
               className="inline-flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-md shadow-brand-primary/25 hover:shadow-glow-primary transition-all transform active:scale-95 cursor-pointer"
             >
               <span>Get a Quote</span>
@@ -286,7 +298,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
             {/* Mobile Drawer Button */}
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-              className="lg:hidden p-2 text-brand-slate hover:text-brand-navy focus:outline-none" 
+              className="lg:hidden p-2 text-brand-slate hover:text-brand-navy focus:outline-none cursor-pointer" 
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -305,19 +317,25 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 Ecosystem
               </button>
               <button 
+                onClick={() => handleNav('instore')} 
+                className={`flex-1 py-2 rounded-lg text-xs font-bold ${currentPage === 'instore' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+              >
+                EFTPOS
+              </button>
+              <button 
                 onClick={() => handleNav('gateway')} 
                 className={`flex-1 py-2 rounded-lg text-xs font-bold ${currentPage === 'gateway' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
               >
-                Payment Gateway ($0)
+                Online
               </button>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-sm font-semibold pb-4 border-b border-brand-border">
+              <button onClick={() => handleNav('instore')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-primary font-bold">
+                In-Store EFTPOS →
+              </button>
               <button onClick={() => handleNav('gateway')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-primary font-bold">
                 Online Gateway →
-              </button>
-              <button onClick={() => handleNav('home', '#solutions-grid')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
-                EFTPOS PAX A920
               </button>
               <button onClick={() => handleNav('home', '#solutions-grid')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
                 VisionPay POS
@@ -339,7 +357,12 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                 <span>Call 02 8319 9500</span>
               </a>
               <button 
-                onClick={() => handleNav(currentPage, currentPage === 'gateway' ? '#gateway-quote' : '#quote-section')} 
+                onClick={() => {
+                  let targetId = '#quote-section';
+                  if (currentPage === 'instore') targetId = '#terminal-quote';
+                  if (currentPage === 'gateway') targetId = '#gateway-quote';
+                  handleNav(currentPage, targetId);
+                }} 
                 className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-brand-primary text-white font-bold text-sm shadow-md"
               >
                 <span>Get a Quote in 1 Day</span>

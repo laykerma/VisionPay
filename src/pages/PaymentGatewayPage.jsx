@@ -972,3 +972,4 @@ $charge = \\VisionPay\\Charge::create([
     </div>
   );
 }
+
