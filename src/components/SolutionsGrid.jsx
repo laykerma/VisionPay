@@ -58,7 +58,8 @@ export default function SolutionsGrid({ onNavigate }) {
         'Hospitality & Retail custom configurations',
       ],
       tag: '$0 Software Fee',
-      cta: 'See POS Demo',
+      cta: 'Explore $0 POS',
+      pageKey: 'pos',
     },
     {
       id: 'links',

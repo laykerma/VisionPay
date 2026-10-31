@@ -846,3 +846,4 @@ export default function PaymentLinksPage({ onNavigateHome }) {
     </div>
   );
 }
+

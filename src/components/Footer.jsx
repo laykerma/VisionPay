@@ -26,6 +26,14 @@ export default function Footer({ onNavigate }) {
     }
   };
 
+  const handlePosNav = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('pos');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleHomeNav = (e) => {
     e.preventDefault();
     if (onNavigate) {
@@ -89,7 +97,11 @@ export default function Footer({ onNavigate }) {
                   Online Gateway ($0 Fee) →
                 </button>
               </li>
-              <li><a href="#solutions-grid" className="hover:text-blue-400 transition-colors">VisionPay Cloud POS</a></li>
+              <li>
+                <button onClick={handlePosNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left font-semibold text-blue-300">
+                  VisionPay Cloud POS ($0 Fee) →
+                </button>
+              </li>
               <li>
                 <button onClick={handleLinksNav} className="hover:text-blue-400 transition-colors cursor-pointer text-left font-semibold text-blue-300">
                   Payment Links (SMS & Email) →

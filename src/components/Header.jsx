@@ -44,15 +44,24 @@ export default function Header({ currentPage = 'home', onNavigate }) {
               <span className="inline-flex items-center justify-center bg-brand-primary/20 text-brand-primary-border px-2 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-brand-primary/30">
                 Australian Special
               </span>
-              <span className="text-slate-300">
-                Same-day settlement · No lock-in contracts · $0 monthly gateway fees.{' '}
-                <button 
-                  onClick={() => handleNav('links', '#link-quote')} 
-                  className="text-white font-semibold underline decoration-brand-primary underline-offset-4 hidden md:inline ml-1 hover:text-brand-primary-border transition-colors cursor-pointer"
-                >
-                  Create Payment Links →
-                </button>
-              </span>
+              {currentPage === 'pos' ? (
+                <span className="text-slate-300">
+                  <strong className="text-white">$0 monthly software fees</strong> · Same-day settlement 7 days a week · Free menu setup · Call{' '}
+                  <a href="tel:0283199500" className="text-blue-300 underline font-bold hover:text-white">
+                    02 8319 9500
+                  </a>
+                </span>
+              ) : (
+                <span className="text-slate-300">
+                  Same-day settlement · No lock-in contracts · $0 monthly software & gateway fees.{' '}
+                  <button 
+                    onClick={() => handleNav('pos')} 
+                    className="text-white font-semibold underline decoration-brand-primary underline-offset-4 hidden md:inline ml-1 hover:text-brand-primary-border transition-colors cursor-pointer"
+                  >
+                    VisionPay POS ($0/mo) →
+                  </button>
+                </span>
+              )}
             </div>
             <button 
               onClick={() => setShowAnnouncement(false)} 
@@ -87,13 +96,20 @@ export default function Header({ currentPage = 'home', onNavigate }) {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-5">
             
-            {/* Quick 4-Way Product View Switcher */}
+            {/* Quick 5-Way Product View Switcher */}
             <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-bold border border-slate-200">
               <button
                 onClick={() => handleNav('home')}
                 className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${currentPage === 'home' ? 'bg-white text-brand-navy shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
               >
                 Ecosystem
+              </button>
+              <button
+                onClick={() => handleNav('pos')}
+                className={`px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${currentPage === 'pos' ? 'bg-brand-primary text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+              >
+                <span>POS</span>
+                <span className="text-[9px] font-extrabold uppercase px-1 py-0.2 rounded bg-white/20">$0</span>
               </button>
               <button
                 onClick={() => handleNav('instore')}
@@ -197,7 +213,7 @@ export default function Header({ currentPage = 'home', onNavigate }) {
 
                   {/* VisionPay POS */}
                   <button 
-                    onClick={() => handleNav('home', '#solutions-grid')} 
+                    onClick={() => handleNav('pos')} 
                     className="flex items-start gap-3.5 p-3 rounded-xl hover:bg-brand-light transition-colors group/item text-left w-full cursor-pointer"
                   >
                     <div className="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
@@ -206,9 +222,9 @@ export default function Header({ currentPage = 'home', onNavigate }) {
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-brand-navy group-hover/item:text-brand-primary">VisionPay POS</span>
-                        <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded uppercase">NEW</span>
+                        <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded uppercase">$0 SOFTWARE</span>
                       </div>
-                      <p className="text-xs text-brand-muted mt-0.5">$0 monthly software fee POS with free menu/inventory setup.</p>
+                      <p className="text-xs text-brand-muted mt-0.5">$0 monthly software fee POS with free menu/inventory setup & same-day settlement.</p>
                     </div>
                   </button>
 
@@ -295,14 +311,15 @@ export default function Header({ currentPage = 'home', onNavigate }) {
             <button 
               onClick={() => {
                 let targetId = '#quote-section';
-                if (currentPage === 'instore') targetId = '#terminal-quote';
-                if (currentPage === 'gateway') targetId = '#gateway-quote';
-                if (currentPage === 'links') targetId = '#link-quote';
+                if (currentPage === 'pos') targetId = '#pos-quote-form';
+                else if (currentPage === 'instore') targetId = '#terminal-quote';
+                else if (currentPage === 'gateway') targetId = '#gateway-quote';
+                else if (currentPage === 'links') targetId = '#link-quote';
                 handleNav(currentPage, targetId);
               }} 
               className="inline-flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-md shadow-brand-primary/25 hover:shadow-glow-primary transition-all transform active:scale-95 cursor-pointer"
             >
-              <span>Get a Quote</span>
+              <span>{currentPage === 'pos' ? 'Get My Free POS Quote' : 'Get a Quote'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
@@ -320,45 +337,51 @@ export default function Header({ currentPage = 'home', onNavigate }) {
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-brand-border bg-white px-4 py-6 space-y-4 shadow-lg animate-in fade-in duration-150">
-            <div className="grid grid-cols-4 gap-1 pb-3 border-b border-brand-border">
+            <div className="grid grid-cols-5 gap-1 pb-3 border-b border-brand-border">
               <button 
                 onClick={() => handleNav('home')} 
-                className={`py-1.5 rounded-lg text-[11px] font-bold text-center ${currentPage === 'home' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+                className={`py-1.5 rounded-lg text-[10px] font-bold text-center ${currentPage === 'home' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
               >
-                Ecosystem
+                All-in-1
+              </button>
+              <button 
+                onClick={() => handleNav('pos')} 
+                className={`py-1.5 rounded-lg text-[10px] font-bold text-center ${currentPage === 'pos' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+              >
+                POS $0
               </button>
               <button 
                 onClick={() => handleNav('instore')} 
-                className={`py-1.5 rounded-lg text-[11px] font-bold text-center ${currentPage === 'instore' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+                className={`py-1.5 rounded-lg text-[10px] font-bold text-center ${currentPage === 'instore' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
               >
                 EFTPOS
               </button>
               <button 
                 onClick={() => handleNav('gateway')} 
-                className={`py-1.5 rounded-lg text-[11px] font-bold text-center ${currentPage === 'gateway' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+                className={`py-1.5 rounded-lg text-[10px] font-bold text-center ${currentPage === 'gateway' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
               >
                 Gateway
               </button>
               <button 
                 onClick={() => handleNav('links')} 
-                className={`py-1.5 rounded-lg text-[11px] font-bold text-center ${currentPage === 'links' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
+                className={`py-1.5 rounded-lg text-[10px] font-bold text-center ${currentPage === 'links' ? 'bg-brand-primary text-white' : 'bg-slate-100 text-slate-700'}`}
               >
                 Links
               </button>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-sm font-semibold pb-4 border-b border-brand-border">
-              <button onClick={() => handleNav('links')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-primary font-bold">
-                Payment Links →
+              <button onClick={() => handleNav('pos')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-primary font-bold">
+                VisionPay POS ($0) →
+              </button>
+              <button onClick={() => handleNav('links')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
+                Payment Links
               </button>
               <button onClick={() => handleNav('instore')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
                 In-Store EFTPOS
               </button>
               <button onClick={() => handleNav('gateway')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
                 Online Gateway
-              </button>
-              <button onClick={() => handleNav('home', '#solutions-grid')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
-                VisionPay POS
               </button>
               <button onClick={() => handleNav('gateway', '#api-showcase')} className="p-2 text-left rounded-lg hover:bg-brand-light text-brand-navy">
                 Developer API
@@ -376,14 +399,15 @@ export default function Header({ currentPage = 'home', onNavigate }) {
               <button 
                 onClick={() => {
                   let targetId = '#quote-section';
-                  if (currentPage === 'instore') targetId = '#terminal-quote';
-                  if (currentPage === 'gateway') targetId = '#gateway-quote';
-                  if (currentPage === 'links') targetId = '#link-quote';
+                  if (currentPage === 'pos') targetId = '#pos-quote-form';
+                  else if (currentPage === 'instore') targetId = '#terminal-quote';
+                  else if (currentPage === 'gateway') targetId = '#gateway-quote';
+                  else if (currentPage === 'links') targetId = '#link-quote';
                   handleNav(currentPage, targetId);
                 }} 
                 className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-brand-primary text-white font-bold text-sm shadow-md"
               >
-                <span>Get a Quote in 1 Day</span>
+                <span>{currentPage === 'pos' ? 'Get My Free POS Quote' : 'Get a Quote in 1 Day'}</span>
               </button>
             </div>
           </div>
