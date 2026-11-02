@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ContactModal from './components/ContactModal';
 import HomePage from './pages/HomePage';
 import PaymentGatewayPage from './pages/PaymentGatewayPage';
 import InStorePaymentsPage from './pages/InStorePaymentsPage';
@@ -8,6 +9,7 @@ import PaymentLinksPage from './pages/PaymentLinksPage';
 import PosPage from './pages/PosPage';
 
 export default function App() {
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(() => {
     const path = window.location.pathname.toLowerCase();
     const hash = window.location.hash.toLowerCase();
@@ -68,8 +70,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-brand-dark flex flex-col font-sans selection:bg-brand-primary-light selection:text-brand-primary">
-      <Header currentPage={currentPage} onNavigate={navigateTo} />
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-rose-100 selection:text-[#ff3b47]">
+      <Header 
+        currentPage={currentPage} 
+        onNavigate={navigateTo} 
+        onOpenContact={() => setContactModalOpen(true)}
+      />
       
       <main className="flex-grow">
         {currentPage === 'pos' ? (
@@ -81,11 +87,23 @@ export default function App() {
         ) : currentPage === 'gateway' ? (
           <PaymentGatewayPage onNavigateHome={() => navigateTo('home')} />
         ) : (
-          <HomePage onNavigate={navigateTo} />
+          <HomePage 
+            onNavigate={navigateTo} 
+            onOpenContact={() => setContactModalOpen(true)} 
+          />
         )}
       </main>
 
-      <Footer onNavigate={navigateTo} />
+      <Footer 
+        onNavigate={navigateTo} 
+        onOpenContact={() => setContactModalOpen(true)} 
+      />
+
+      {/* Global Interactive Contact / Lead Capture Modal */}
+      <ContactModal 
+        isOpen={contactModalOpen} 
+        onClose={() => setContactModalOpen(false)} 
+      />
     </div>
   );
 }
