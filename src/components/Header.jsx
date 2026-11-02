@@ -46,10 +46,12 @@ export default function Header({ currentPage = 'home', onNavigate }) {
           <div className="flex items-center gap-2.5 truncate">
             <span className="inline-flex items-center gap-1 bg-brand-primary/25 text-blue-300 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border border-blue-400/30 shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              AU Special
+              {currentPage === 'pos' ? 'POS Special' : 'AU Special'}
             </span>
             <span className="text-slate-300 font-medium truncate">
-              Same-day settlement · No lock-in contracts · $0 monthly gateway fees
+              {currentPage === 'pos'
+                ? '$0 monthly software fees · Same-day settlement 7 days · No lock-in'
+                : 'Same-day settlement · No lock-in contracts · $0 monthly gateway fees'}
             </span>
           </div>
 
