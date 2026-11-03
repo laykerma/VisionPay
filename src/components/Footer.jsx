@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import { Phone, ExternalLink, Globe, ChevronDown, ShieldCheck } from 'lucide-react';
+import React from 'react';
+import { Phone, Mail, MapPin, ShieldCheck, ExternalLink, ArrowRight } from 'lucide-react';
 
 export default function Footer({ onNavigate, onOpenContact }) {
-  const [regionMenuOpen, setRegionMenuOpen] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState('United States (English)');
-
   const handleNav = (page, anchor) => {
     if (onNavigate) {
       onNavigate(page);
@@ -19,24 +16,26 @@ export default function Footer({ onNavigate, onOpenContact }) {
     }
   };
 
-  const handleContactClick = () => {
-    if (onOpenContact) {
+  const handleQuoteClick = () => {
+    const el = document.querySelector('#quote-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else if (onOpenContact) {
       onOpenContact();
     } else {
-      const el = document.querySelector('#need-help-section') || document.querySelector('#contact-section');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      handleNav('home', '#quote-section');
     }
   };
 
   return (
-    <footer id="contact-footer" className="bg-[#07092e] text-slate-300 pt-16 pb-12 border-t border-slate-800 text-xs sm:text-sm font-sans">
+    <footer id="contact-footer" className="bg-[#0B132B] text-slate-300 pt-16 pb-12 border-t border-slate-800 text-xs sm:text-sm font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Header Row (Worldpay Exact Style) */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-12 border-b border-slate-800/80">
+        {/* Top Header Row */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-12 border-b border-slate-800">
           
-          {/* Left: White VisionPay Logo */}
-          <div className="flex items-center gap-3">
+          {/* Left: White VisionPay Logo & Tagline */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
             <button 
               onClick={() => handleNav('home')}
               className="flex items-center gap-2 group focus:outline-none cursor-pointer"
@@ -44,184 +43,173 @@ export default function Footer({ onNavigate, onOpenContact }) {
               <img 
                 src="/visionpay-logo-white.png" 
                 alt="VisionPay" 
-                className="h-8 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity" 
+                className="h-8 sm:h-9 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity" 
               />
             </button>
+            <span className="hidden sm:block text-slate-600">|</span>
+            <span className="text-xs text-slate-400">
+              Australian payments, POS and gift cards.
+            </span>
           </div>
 
-          {/* Right: Region Selector, Sign In, and Red Contact Us Pill */}
-          <div className="flex flex-wrap items-center justify-center gap-5 text-xs font-medium">
-            
-            {/* Region Selector */}
-            <div className="relative">
-              <button 
-                onClick={() => setRegionMenuOpen(!regionMenuOpen)}
-                className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors cursor-pointer"
-              >
-                <span className="text-sm">🇺🇸</span>
-                <span>{selectedRegion}</span>
-                <ChevronDown className="w-3 h-3 text-slate-400" />
-              </button>
-
-              {regionMenuOpen && (
-                <div className="absolute right-0 bottom-full mb-2 w-56 bg-slate-900 text-white rounded-xl shadow-2xl border border-slate-700 py-1.5 z-50 text-xs">
-                  <button
-                    onClick={() => { setSelectedRegion('United States (English)'); setRegionMenuOpen(false); }}
-                    className="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center gap-2"
-                  >
-                    <span>🇺🇸</span>
-                    <span>United States (English)</span>
-                  </button>
-                  <button
-                    onClick={() => { setSelectedRegion('Australia (English)'); setRegionMenuOpen(false); }}
-                    className="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center gap-2"
-                  >
-                    <span>🇦🇺</span>
-                    <span>Australia (English)</span>
-                  </button>
-                  <button
-                    onClick={() => { setSelectedRegion('United Kingdom (English)'); setRegionMenuOpen(false); }}
-                    className="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center gap-2"
-                  >
-                    <span>🇬🇧</span>
-                    <span>United Kingdom (English)</span>
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <span className="h-3 w-px bg-slate-700 hidden sm:block" />
-
-            {/* Merchant Sign In */}
+          {/* Right: Quick Quote & Support Hotline */}
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
             <a 
-              href="https://portal.visionpay.com.au" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-slate-300 hover:text-white transition-colors flex items-center gap-1"
+              href="tel:0283199500" 
+              className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors bg-slate-900/80 px-4 py-2 rounded-xl border border-slate-700/80"
             >
-              <span>Sign in</span>
-              <ExternalLink className="w-3 h-3 text-slate-400" />
+              <Phone className="w-3.5 h-3.5 text-blue-400" />
+              <span>02 8319 9500 (24/7 AU)</span>
             </a>
 
-            {/* Red Contact Us Pill */}
             <button 
-              onClick={handleContactClick}
-              className="bg-[#ff3b47] hover:bg-[#e62635] text-white font-bold text-xs px-5 py-2 rounded-full transition shadow-xs cursor-pointer"
+              onClick={handleQuoteClick}
+              className="bg-brand-primary hover:bg-[#172DC2] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition shadow-xs flex items-center gap-1.5 cursor-pointer"
             >
-              Contact us
+              <span>Get a Quote</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
-
           </div>
 
         </div>
 
-        {/* 7 Mega Columns Grid (Worldpay Exact Architecture) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 py-14 border-b border-slate-800/80 text-xs">
+        {/* 4 Clean Columns Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 py-12 border-b border-slate-800 text-xs">
           
-          {/* Col 1: Accept */}
+          {/* Column 1: Solutions */}
           <div>
-            <h4 className="font-bold text-white text-sm mb-4">Accept</h4>
+            <h4 className="font-bold text-white text-sm mb-4">Solutions</h4>
             <ul className="space-y-2.5 text-slate-400">
-              <li><button onClick={() => handleNav('pos')} className="hover:text-white transition-colors text-left">POS Systems</button></li>
-              <li><button onClick={() => handleNav('instore')} className="hover:text-white transition-colors text-left">In-Store EFTPOS</button></li>
-              <li><button onClick={() => handleNav('gateway')} className="hover:text-white transition-colors text-left">Online Payments</button></li>
-              <li><button onClick={() => handleNav('links')} className="hover:text-white transition-colors text-left">Payment Links</button></li>
-              <li><button onClick={() => handleNav('home', '#agentic-report')} className="hover:text-white transition-colors text-left">Agentic Commerce</button></li>
-              <li><button onClick={() => handleNav('home', '#powering-payments')} className="hover:text-white transition-colors text-left">Payment Methods</button></li>
+              <li>
+                <button onClick={() => handleNav('gateway')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Online Payments
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('instore')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  In-Store Payments (EFTPOS)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('links')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Payment Links
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('gateway', '#api-showcase')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Fraud Protection (3DS2)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('pos')} className="hover:text-white transition-colors text-left cursor-pointer flex items-center gap-1.5">
+                  <span>VisionPay POS</span>
+                  <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.2 rounded border border-emerald-800/80">$0/MO</span>
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('home', '#solutions-grid')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Gift Cards & Rewards
+                </button>
+              </li>
             </ul>
           </div>
 
-          {/* Col 2: Protect */}
+          {/* Column 2: Developers */}
           <div>
-            <h4 className="font-bold text-white text-sm mb-4">Protect</h4>
+            <h4 className="font-bold text-white text-sm mb-4">Developers</h4>
             <ul className="space-y-2.5 text-slate-400">
-              <li><button onClick={() => handleNav('gateway')} className="hover:text-white transition-colors text-left">Fraud Prevention</button></li>
-              <li><button onClick={() => handleNav('gateway')} className="hover:text-white transition-colors text-left">3DS2 Authentication</button></li>
-              <li><button onClick={() => handleNav('gateway')} className="hover:text-white transition-colors text-left">Dispute Management</button></li>
-              <li><button onClick={() => handleNav('gateway')} className="hover:text-white transition-colors text-left">Tokenization Vault</button></li>
+              <li>
+                <button onClick={() => handleNav('gateway', '#api-showcase')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  API Documentation
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('home', '#partners-section')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Integrations (WooCommerce, Shopify)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('gateway', '#api-showcase')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Integration Guides & Webhooks
+                </button>
+              </li>
+              <li>
+                <a href="https://portal.visionpay.com.au" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
+                  <span>Merchant Portal Login</span>
+                  <ExternalLink className="w-3 h-3 text-slate-500" />
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Col 3: Optimize */}
-          <div>
-            <h4 className="font-bold text-white text-sm mb-4">Optimize</h4>
-            <ul className="space-y-2.5 text-slate-400">
-              <li><button onClick={() => handleNav('gateway')} className="hover:text-white transition-colors text-left">Dynamic Routing</button></li>
-              <li><button onClick={() => handleNav('instore')} className="hover:text-white transition-colors text-left">Least-Cost Routing</button></li>
-              <li><button onClick={() => handleNav('gateway')} className="hover:text-white transition-colors text-left">Credential Management</button></li>
-              <li><button onClick={() => handleNav('home', '#insights-section')} className="hover:text-white transition-colors text-left">Insights & Reporting</button></li>
-              <li><button onClick={() => handleNav('pos')} className="hover:text-white transition-colors text-left">Loyalty & Gift Cards</button></li>
-            </ul>
-          </div>
-
-          {/* Col 4: Who We Serve */}
-          <div>
-            <h4 className="font-bold text-white text-sm mb-4">Who We Serve</h4>
-            <ul className="space-y-2.5 text-slate-400">
-              <li><button onClick={() => handleNav('home', '#who-we-serve')} className="hover:text-white transition-colors text-left">Small Business</button></li>
-              <li><button onClick={() => handleNav('home', '#who-we-serve')} className="hover:text-white transition-colors text-left">Enterprise Brands</button></li>
-              <li><button onClick={() => handleNav('pos')} className="hover:text-white transition-colors text-left">Cafes & Bakeries</button></li>
-              <li><button onClick={() => handleNav('pos')} className="hover:text-white transition-colors text-left">Restaurants & Bars</button></li>
-              <li><button onClick={() => handleNav('home', '#customer-stories')} className="hover:text-white transition-colors text-left">Software Platforms</button></li>
-              <li><button onClick={() => handleNav('home', '#customer-stories')} className="hover:text-white transition-colors text-left">Marketplaces</button></li>
-              <li><button onClick={() => handleNav('home', '#customer-stories')} className="hover:text-white transition-colors text-left">Retail & QSR</button></li>
-              <li><button onClick={() => handleNav('home', '#customer-stories')} className="hover:text-white transition-colors text-left">Travel & Airlines</button></li>
-            </ul>
-          </div>
-
-          {/* Col 5: Insights */}
-          <div>
-            <h4 className="font-bold text-white text-sm mb-4">Insights</h4>
-            <ul className="space-y-2.5 text-slate-400">
-              <li><button onClick={() => handleNav('home', '#insights-section')} className="hover:text-white transition-colors text-left">Articles</button></li>
-              <li><button onClick={() => handleNav('home', '#insights-section')} className="hover:text-white transition-colors text-left">Guides & Research</button></li>
-              <li><button onClick={() => handleNav('home', '#customer-stories')} className="hover:text-white transition-colors text-left">Customer Stories</button></li>
-              <li><button onClick={() => handleNav('home', '#feature-banners')} className="hover:text-white transition-colors text-left">Global Payments Report</button></li>
-              <li><button onClick={() => handleNav('home', '#agentic-report')} className="hover:text-white transition-colors text-left">Agentic Commerce</button></li>
-            </ul>
-          </div>
-
-          {/* Col 6: Resources */}
-          <div>
-            <h4 className="font-bold text-white text-sm mb-4">Resources</h4>
-            <ul className="space-y-2.5 text-slate-400">
-              <li><button onClick={() => handleNav('home', '#need-help-section')} className="hover:text-white transition-colors text-left">Support Desk</button></li>
-              <li><a href="https://portal.visionpay.com.au" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Account Center</a></li>
-              <li><button onClick={() => handleNav('gateway', '#api-showcase')} className="hover:text-white transition-colors text-left">Developer Hub</button></li>
-              <li><button onClick={() => handleNav('home', '#powering-payments')} className="hover:text-white transition-colors text-left">Compliance & PCI DSS</button></li>
-              <li><button onClick={() => handleNav('home', '#need-help-section')} className="hover:text-white transition-colors text-left">Global Offices</button></li>
-            </ul>
-          </div>
-
-          {/* Col 7: Company */}
+          {/* Column 3: Company */}
           <div>
             <h4 className="font-bold text-white text-sm mb-4">Company</h4>
             <ul className="space-y-2.5 text-slate-400">
-              <li><button onClick={() => handleNav('home')} className="hover:text-white transition-colors text-left">About VisionPay</button></li>
-              <li><button onClick={() => handleNav('home', '#customer-stories')} className="hover:text-white transition-colors text-left">Executive Team</button></li>
-              <li><button onClick={() => handleNav('home', '#customer-stories')} className="hover:text-white transition-colors text-left">ESG & Governance</button></li>
-              <li><button onClick={() => handleNav('home', '#insights-section')} className="hover:text-white transition-colors text-left">Newsroom</button></li>
-              <li><button onClick={() => handleNav('home', '#need-help-section')} className="hover:text-white transition-colors text-left">Legal & Privacy</button></li>
-              <li><button onClick={() => handleNav('home', '#need-help-section')} className="hover:text-white transition-colors text-left">Careers</button></li>
+              <li>
+                <button onClick={() => handleNav('home')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  About VisionPay
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('home', '#partner-banner')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Partner Program
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('home', '#quote-section')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Contact Us
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('home', '#why-switch')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Careers (Sydney HQ)
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Support */}
+          <div>
+            <h4 className="font-bold text-white text-sm mb-4">Support</h4>
+            <ul className="space-y-3 text-slate-400">
+              <li className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <a href="mailto:support@visionpay.com.au" className="hover:text-white transition-colors">
+                  support@visionpay.com.au
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <a href="tel:0283199500" className="hover:text-white transition-colors font-bold text-slate-200">
+                  02 8319 9500
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                <span>24/7 Australian customer & tech support</span>
+              </li>
+              <li className="flex items-start gap-2 pt-1">
+                <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
+                <span>Level 14, 175 Pitt Street, Sydney NSW 2000</span>
+              </li>
             </ul>
           </div>
 
         </div>
 
-        {/* Bottom Legal, Cookie & Copyright Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        {/* Legal & Meta Bottom Strip */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 text-center md:text-left">
           <div>
-            <span>© 2026 VisionPay. All rights reserved. Registered financial entity and PCI DSS Level 1 certified service provider.</span>
+            <span>VisionPay Pty Ltd · Sydney, Australia · © 2026. All rights reserved. Registered Australian financial entity & PCI DSS Level 1 Certified.</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-slate-400">
-            <button onClick={() => handleNav('home', '#need-help-section')} className="hover:text-white transition-colors">Privacy Notice</button>
+            <button onClick={() => handleNav('home', '#quote-section')} className="hover:text-white transition-colors">Privacy Policy</button>
             <span>•</span>
-            <button onClick={() => handleNav('home', '#need-help-section')} className="hover:text-white transition-colors">Terms of Use</button>
+            <button onClick={() => handleNav('home', '#quote-section')} className="hover:text-white transition-colors">Terms & Conditions</button>
             <span>•</span>
-            <button onClick={() => handleNav('home', '#need-help-section')} className="hover:text-white transition-colors">Security</button>
-            <span>•</span>
-            <button onClick={() => handleNav('home', '#need-help-section')} className="hover:text-white transition-colors">Cookie Preferences</button>
+            <button onClick={() => handleNav('home', '#quote-section')} className="hover:text-white transition-colors">Merchant Agreement</button>
           </div>
         </div>
 

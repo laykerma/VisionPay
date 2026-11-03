@@ -89,7 +89,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="e.g. Alex Morgan"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-[#ff3b47] focus:bg-white"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-brand-primary focus:bg-white"
                     />
                   </div>
 
@@ -101,7 +101,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       value={formData.workEmail}
                       onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                       placeholder="alex@company.com"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-[#ff3b47] focus:bg-white"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-brand-primary focus:bg-white"
                     />
                   </div>
                 </div>
@@ -115,7 +115,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       value={formData.companyName}
                       onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                       placeholder="Company Inc."
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-[#ff3b47] focus:bg-white"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-brand-primary focus:bg-white"
                     />
                   </div>
 
@@ -127,7 +127,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="0412 345 678"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-[#ff3b47] focus:bg-white"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-brand-primary focus:bg-white"
                     />
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     <select
                       value={formData.annualVolume}
                       onChange={(e) => setFormData({ ...formData, annualVolume: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-[#ff3b47] focus:bg-white"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-brand-primary focus:bg-white"
                     >
                       <option value="Under $500K">Under $500K</option>
                       <option value="$500K - $1M">$500K - $1M</option>
@@ -153,7 +153,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     <select
                       value={formData.interest}
                       onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-[#ff3b47] focus:bg-white"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-brand-primary focus:bg-white"
                     >
                       <option value="Omnichannel & POS">Omnichannel & POS ($0 software)</option>
                       <option value="Online Payment Gateway">Online Payment Gateway & 3DS</option>
@@ -167,7 +167,7 @@ export default function ContactModal({ isOpen, onClose }) {
                 <div className="pt-3">
                   <button
                     type="submit"
-                    className="w-full bg-[#ff3b47] hover:bg-[#e62635] text-white font-bold py-3.5 px-6 rounded-full shadow-md transition-all text-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-brand-primary hover:bg-[#172DC2] text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Talk to an expert</span>
                     <ArrowRight className="w-4 h-4" />
@@ -190,3 +190,4 @@ export default function ContactModal({ isOpen, onClose }) {
     </div>
   );
 }
+
