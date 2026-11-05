@@ -14,7 +14,8 @@ import {
   ExternalLink, 
   Sparkles,
   Zap,
-  Building2
+  Building2,
+  Search
 } from 'lucide-react';
 
 export default function Header({ currentPage = 'home', onNavigate, onOpenContact }) {
