@@ -112,28 +112,25 @@ export default function Header({ currentPage = 'home', onNavigate, onOpenContact
       {/* 2. MAIN HEADER BAR */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
         
-        {/* Left: Brand Logo */}
-        <div className="flex items-center gap-3 shrink-0">
+        {/* Left: Brand Logo (Worldpay Style - Clean wordmark without distracting badges) */}
+        <div className="flex items-center shrink-0">
           <button 
             onClick={() => handleNav('home')} 
-            className="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-brand-primary rounded-lg py-1 text-left cursor-pointer"
+            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-brand-primary rounded-lg py-1 text-left cursor-pointer"
+            aria-label="VisionPay Home"
           >
             <img 
               src="/visionpay-logo.png" 
               alt="VisionPay" 
               className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-102"
             />
-            <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50/80 border border-blue-200/80 px-2 py-0.5 rounded-full shadow-2xs">
-              <span className="text-xs leading-none">🇦🇺</span>
-              <span>AU</span>
-            </span>
           </button>
         </div>
 
-        {/* Center: Desktop Navigation Links (Solutions Mega-Menu, Integrations, Partners, Contact) */}
-        <nav className="hidden lg:flex items-center gap-8 xl:gap-9 text-sm font-bold text-slate-800">
+        {/* Center: Navigation Links Matching Worldpay Layout (Products, Who we serve, Insights, Developers, Support, About) */}
+        <nav className="hidden lg:flex items-center gap-7 xl:gap-8 text-sm font-semibold text-slate-800">
           
-          {/* Solutions Dropdown with Mega-Menu */}
+          {/* Products Dropdown with Mega-Menu */}
           <div 
             className="relative py-6"
             onMouseEnter={() => setSolutionsHover(true)}
@@ -143,7 +140,7 @@ export default function Header({ currentPage = 'home', onNavigate, onOpenContact
               className="flex items-center gap-1.5 hover:text-brand-primary focus:outline-none transition-colors cursor-pointer"
               onClick={() => setSolutionsHover(!solutionsHover)}
             >
-              <span>Solutions</span>
+              <span>Products</span>
               <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${solutionsHover ? 'rotate-180 text-brand-primary' : ''}`} />
             </button>
 
@@ -269,49 +266,76 @@ export default function Header({ currentPage = 'home', onNavigate, onOpenContact
             </div>
           </div>
 
-          {/* Integrations */}
+          {/* Who we serve (Worldpay Section 3) */}
+          <button 
+            onClick={() => handleNav('home', '#who-we-serve')} 
+            className="hover:text-brand-primary transition-colors cursor-pointer"
+          >
+            Who we serve
+          </button>
+
+          {/* Insights (Worldpay Reports & Industry Insights) */}
+          <button 
+            onClick={() => handleNav('home', '#insights-section')} 
+            className="hover:text-brand-primary transition-colors cursor-pointer"
+          >
+            Insights
+          </button>
+
+          {/* Developers & Integrations */}
           <button 
             onClick={() => handleNav('home', '#partners-section')} 
             className="hover:text-brand-primary transition-colors cursor-pointer"
           >
-            Integrations
+            Developers
           </button>
 
-          {/* Partners */}
+          {/* Support */}
+          <button 
+            onClick={() => handleNav('home', '#need-help-section')} 
+            className="hover:text-brand-primary transition-colors cursor-pointer"
+          >
+            Support
+          </button>
+
+          {/* About */}
           <button 
             onClick={() => handleNav('home', '#partner-banner')} 
             className="hover:text-brand-primary transition-colors cursor-pointer"
           >
-            Partners
-          </button>
-
-          {/* Contact */}
-          <button 
-            onClick={() => handleNav('home', '#quote-section')} 
-            className="hover:text-brand-primary transition-colors cursor-pointer"
-          >
-            Contact
+            About
           </button>
 
         </nav>
 
-        {/* Right: Phone & Primary CTA Button [Get a Quote] */}
-        <div className="flex items-center gap-4">
+        {/* Right: Search, Phone & Primary CTA Pill Button (Worldpay Style in Brand Blue) */}
+        <div className="flex items-center gap-3 sm:gap-4">
           
+          {/* Quick Phone Call */}
           <a 
             href="tel:0283199500" 
-            className="hidden sm:flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-brand-primary transition-colors"
+            className="hidden xl:flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-brand-primary transition-colors"
           >
             <Phone className="w-3.5 h-3.5 text-brand-primary" />
             <span>02 8319 9500</span>
           </a>
 
-          {/* Primary CTA [Get a Quote] in brand blue */}
+          {/* Search Trigger Icon (Worldpay style) */}
+          <button
+            onClick={handleQuoteClick}
+            aria-label="Search or Quick Quote"
+            className="p-2 text-slate-600 hover:text-brand-primary hover:bg-slate-50 rounded-full transition-colors cursor-pointer"
+            title="Search"
+          >
+            <Search className="w-4 h-4" />
+          </button>
+
+          {/* Primary CTA [Contact us] Rounded Pill in Brand Blue */}
           <button 
             onClick={handleQuoteClick}
-            className="bg-brand-primary hover:bg-[#172DC2] text-white font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 rounded-xl shadow-xs hover:shadow transition-all cursor-pointer flex items-center gap-1.5"
+            className="bg-brand-primary hover:bg-[#172DC2] text-white font-bold text-xs sm:text-sm px-6 sm:px-7 py-2.5 rounded-full shadow-xs hover:shadow transition-all cursor-pointer flex items-center gap-1.5"
           >
-            <span>Get a Quote</span>
+            <span>Contact us</span>
             <ArrowRight className="w-4 h-4" />
           </button>
 
@@ -319,6 +343,7 @@ export default function Header({ currentPage = 'home', onNavigate, onOpenContact
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 text-slate-700 hover:text-slate-900 focus:outline-none cursor-pointer"
+            aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
