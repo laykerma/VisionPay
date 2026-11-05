@@ -35,7 +35,9 @@ import {
   Play,
   Volume2,
   Search,
-  CheckCircle
+  CheckCircle,
+  MousePointer,
+  Settings
 } from 'lucide-react';
 
 export default function HomePage({ onNavigate, onOpenContact }) {
@@ -875,7 +877,215 @@ export default function HomePage({ onNavigate, onOpenContact }) {
 
 
       {/* =========================================================================
-          SECTION 7: SAME-DAY SETTLEMENT LEAD FEATURE BAND
+          SECTION 7: INSIGHTS ("OUR EXPERTISE IS YOUR EDGE" - Worldpay Screenshot)
+          ========================================================================= */}
+      <section id="insights-section" className="py-20 bg-white border-b border-slate-100 text-left">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Header Row */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                Insights
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B132B] tracking-tight">
+                Our expertise is your edge
+              </h2>
+              <p className="text-base text-slate-600 mt-2 font-normal">
+                We know payments. Check out our latest articles, white papers and market reports.
+              </p>
+            </div>
+
+            <button 
+              onClick={handleQuoteClick}
+              className="bg-[#0B132B] hover:bg-slate-800 text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-full transition-all shrink-0 shadow-xs cursor-pointer inline-flex items-center gap-1.5"
+            >
+              <span>See all insight articles</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* 3 Real Insight Cards matching user screenshot */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            {/* Card 1: AI and payment acceptance */}
+            <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-lg transition-all flex flex-col justify-between group">
+              <div>
+                {/* Visual Graphic Header: Flowchart diagram with Pay button */}
+                <div className="h-56 bg-gradient-to-br from-[#ff5a60] to-[#e63946] p-4 relative overflow-hidden flex flex-col items-center justify-center select-none">
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-black/20" />
+                  
+                  {/* Flow Diagram */}
+                  <div className="relative z-10 w-full max-w-[260px] space-y-2">
+                    {/* Top Pay Button with cursor */}
+                    <div className="flex items-center justify-center relative">
+                      <div className="bg-black text-white text-xs font-bold px-5 py-1.5 rounded-full shadow-md flex items-center gap-1.5 border border-white/20">
+                        <span>Pay</span>
+                      </div>
+                      <MousePointer className="w-4 h-4 text-white fill-white absolute -bottom-2 right-20 drop-shadow animate-pulse" />
+                    </div>
+
+                    {/* Decision Branch */}
+                    <div className="grid grid-cols-2 gap-2 pt-1 text-[9px] font-bold">
+                      {/* Left: Optimized */}
+                      <div className="bg-white text-slate-900 rounded-lg p-2 shadow-xs border border-white/40 space-y-1">
+                        <div className="flex items-center gap-1 text-blue-600">
+                          <Sparkles className="w-3 h-3 text-blue-600" />
+                          <span>Optimized</span>
+                        </div>
+                        <div className="grid grid-cols-3 gap-0.5 pt-1 text-[8px] text-slate-500">
+                          <span className="bg-slate-100 p-0.5 rounded text-center">Buyer</span>
+                          <span className="bg-slate-100 p-0.5 rounded text-center">Network</span>
+                          <span className="bg-slate-100 p-0.5 rounded text-center">Risk</span>
+                        </div>
+                      </div>
+
+                      {/* Right: Not optimized */}
+                      <div className="bg-white/80 text-slate-700 rounded-lg p-2 shadow-xs space-y-1 opacity-75">
+                        <div className="text-red-500 font-bold">Not optimized</div>
+                        <div className="text-[8px] text-slate-500">In processing...</div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Result: Payment Approved */}
+                    <div className="bg-emerald-500 text-white text-[10px] font-bold py-1 px-3 rounded-full flex items-center justify-center gap-1 shadow-xs max-w-[170px] mx-auto">
+                      <CheckCircle2 className="w-3 h-3" />
+                      <span>Payment approved</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-7">
+                  <h3 className="text-xl font-bold text-[#0B132B] group-hover:text-brand-primary transition-colors leading-snug">
+                    AI and payment acceptance: more approvals, fewer false declines
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed font-normal">
+                    Shift from static rules to real-time decisions that drive better outcomes.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-7 pt-0">
+                <button 
+                  onClick={handleQuoteClick}
+                  className="text-xs font-bold text-slate-900 group-hover:text-brand-primary flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <span>Read more</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2: What doesn't change when you build on VisionPay APIs */}
+            <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-lg transition-all flex flex-col justify-between group">
+              <div>
+                {/* Visual Graphic Header: Massive Bridge Piers Photo with Gear Icon */}
+                <div className="h-56 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=800&q=80" 
+                    alt="Infrastructure Bridge Piers"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                  />
+                  {/* Black Gear Badge Overlay on the Right (as in screenshot) */}
+                  <div className="absolute top-8 right-8 w-11 h-11 bg-black/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-white border border-white/20 shadow-lg">
+                    <Settings className="w-5 h-5 text-white animate-spin-slow" />
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-7">
+                  <h3 className="text-xl font-bold text-[#0B132B] group-hover:text-brand-primary transition-colors leading-snug">
+                    What doesn't change when you build on VisionPay APIs
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed font-normal">
+                    When payment infrastructure changes, developers bear the cost of uncertainty. Here's why building on VisionPay remains stable — and what that means in practice.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-7 pt-0">
+                <button 
+                  onClick={handleQuoteClick}
+                  className="text-xs font-bold text-slate-900 group-hover:text-brand-primary flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <span>Read more</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+
+            {/* Card 3: Agentic commerce: what it means for your business */}
+            <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-lg transition-all flex flex-col justify-between group">
+              <div>
+                {/* Visual Graphic Header: Agentic Commerce Flow Nodes Diagram */}
+                <div className="h-56 bg-[#ede9fe] p-4 relative overflow-hidden flex flex-col items-center justify-center select-none">
+                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-300/40 rounded-full blur-2xl pointer-events-none" />
+
+                  {/* Flow Diagram */}
+                  <div className="relative z-10 w-full max-w-[260px] space-y-2">
+                    {/* Top Row: Search input + BUY tag */}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="bg-white rounded-lg px-2.5 py-1 text-[9px] font-semibold text-slate-700 shadow-2xs border border-purple-200/60 flex items-center gap-1.5 flex-1">
+                        <Search className="w-3 h-3 text-purple-600" />
+                        <span className="truncate">Search for purchase</span>
+                      </div>
+                      <span className="bg-[#7c3aed] text-white text-[9px] font-black px-2 py-1 rounded-md shadow-2xs">
+                        BUY
+                      </span>
+                    </div>
+
+                    {/* Middle Row: AI Node & Token Authentication */}
+                    <div className="bg-white/95 rounded-xl p-2.5 shadow-xs border border-purple-100 flex items-center justify-between text-[9px]">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-4 h-4 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-[10px] font-bold">
+                          ✨
+                        </span>
+                        <span className="font-semibold text-slate-800">Agentic Checkout Node</span>
+                      </div>
+                      <Lock className="w-3 h-3 text-emerald-600" />
+                    </div>
+
+                    {/* Bottom Row: Green Completed Badge */}
+                    <div className="flex items-center justify-center">
+                      <div className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold py-1 px-3 rounded-full flex items-center gap-1 shadow-2xs">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                        <span>Completed · $0 gateway fee</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-7">
+                  <h3 className="text-xl font-bold text-[#0B132B] group-hover:text-brand-primary transition-colors leading-snug">
+                    Agentic commerce: what it means for your business
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed font-normal">
+                    Get a clear view of how AI-driven purchasing is changing checkout, fraud and liability, and what merchants should do now to prepare.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-7 pt-0">
+                <button 
+                  onClick={handleQuoteClick}
+                  className="text-xs font-bold text-slate-900 group-hover:text-brand-primary flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <span>Read more</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =========================================================================
+          SECTION 8: SAME-DAY SETTLEMENT LEAD FEATURE BAND
           ========================================================================= */}
       <section className="py-20 bg-white border-b border-slate-200/90 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
