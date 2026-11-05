@@ -1,4 +1,4 @@
-import React, { useState, useId } from 'react';
+import React, { useState, useEffect, useId } from 'react';
 import { 
   ArrowRight, 
   Phone, 
@@ -53,6 +53,44 @@ export default function HomePage({ onNavigate, onOpenContact }) {
   // 4. Hero Interactive Product Card State (Basket count simulation)
   const [basketCount, setBasketCount] = useState(0);
   const [addedItemToast, setAddedItemToast] = useState(null);
+
+  // 4b. Hero Phone Staggered Animation Sequence ("hiệu ứng tin nhắn hiện dần lên")
+  // Step 0: Initial Screen
+  // Step 1: Voice message appears (0.5s)
+  // Step 2: AI Assistant bubble appears (1.7s)
+  // Step 3: Product card 1 slides in from left (2.9s)
+  // Step 4: Product card 2 slides in (4.1s)
+  // Step 5: "Add to basket" triggered / checkmark (5.3s)
+  const [animStep, setAnimStep] = useState(1);
+  const [replayKey, setReplayKey] = useState(0);
+
+  useEffect(() => {
+    let t1, t2, t3, t4, t5, tLoop;
+
+    setAnimStep(0);
+    t1 = setTimeout(() => setAnimStep(1), 500);
+    t2 = setTimeout(() => setAnimStep(2), 1700);
+    t3 = setTimeout(() => setAnimStep(3), 2900);
+    t4 = setTimeout(() => setAnimStep(4), 4100);
+    t5 = setTimeout(() => setAnimStep(5), 5300);
+
+    tLoop = setTimeout(() => {
+      setReplayKey(prev => prev + 1);
+    }, 11500);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+      clearTimeout(t5);
+      clearTimeout(tLoop);
+    };
+  }, [replayKey]);
+
+  const handleManualReplay = () => {
+    setReplayKey(prev => prev + 1);
+  };
 
   // 5. Inline Lead Capture Form State
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -225,121 +263,212 @@ export default function HomePage({ onNavigate, onOpenContact }) {
 
             </div>
 
-            {/* Right Column: Lavender Rounded Card with Phone & Conversational Shopping (Screenshot 1) */}
+            {/* Right Column: Lavender Rounded Card with Phone & Conversational Shopping (Matching Worldpay Photo) */}
             <div className="lg:col-span-6">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
+              <div className="relative mx-auto max-w-lg lg:max-w-none">
                 
-                {/* Soft Lavender / Violet Outer Rounded Container Card */}
-                <div className="bg-[#ede9fe] rounded-[44px] p-6 sm:p-10 flex items-center justify-center relative overflow-hidden min-h-[520px] sm:min-h-[560px] border border-purple-100/80 shadow-2xs">
+                {/* Soft Lavender / Lilac Outer Rounded Container Card */}
+                <div className="bg-[#ede9fe] rounded-[44px] p-6 sm:p-10 flex flex-col items-center justify-end relative overflow-hidden min-h-[580px] sm:min-h-[640px] border border-purple-200/70 shadow-2xs">
                   
                   {/* Subtle ambient lighting */}
-                  <div className="absolute top-0 right-0 w-80 h-80 bg-purple-200/50 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute top-0 right-0 w-80 h-80 bg-purple-300/30 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-200/30 rounded-full blur-3xl pointer-events-none" />
+
+                  {/* Manual Replay Pill Button */}
+                  <button
+                    onClick={handleManualReplay}
+                    className="absolute top-5 right-6 z-40 bg-white/85 hover:bg-white text-slate-700 text-[11px] font-bold px-3 py-1.5 rounded-full shadow-xs border border-purple-200/80 flex items-center gap-1.5 transition-all cursor-pointer backdrop-blur-sm"
+                    title="Replay conversation animation"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>↺ Replay demo</span>
+                  </button>
 
                   {/* Toast Notification when adding item */}
                   {addedItemToast && (
-                    <div className="absolute top-6 inset-x-8 z-30 bg-[#0B132B] text-white text-xs font-bold py-2 px-4 rounded-full shadow-lg flex items-center justify-between animate-fadeIn border border-slate-700">
+                    <div className="absolute top-5 left-6 z-40 bg-[#0B132B] text-white text-xs font-bold py-2 px-4 rounded-full shadow-lg flex items-center gap-2 animate-fadeIn border border-slate-700">
                       <span>✓ Added {addedItemToast} to cart!</span>
                       <span className="text-emerald-400 font-mono">Cart: {basketCount} items</span>
                     </div>
                   )}
 
-                  {/* Sleek Smartphone Mockup (Exactly Matching Screenshot 1) */}
-                  <div className="relative w-full max-w-[310px] sm:max-w-[330px] bg-slate-900 rounded-[42px] p-3 shadow-2xl border-4 border-slate-800 text-white">
+                  {/* Hand & Smartphone Realistic Mockup Composition */}
+                  <div className="relative w-full max-w-[340px] sm:max-w-[360px] flex items-end justify-center pt-6">
                     
-                    {/* Phone Dynamic Island / Notch */}
-                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-20" />
-
-                    {/* Inside Phone Screen */}
-                    <div className="bg-slate-950 rounded-[34px] pt-8 pb-4 px-4 min-h-[460px] flex flex-col justify-between relative overflow-hidden text-left">
-                      
-                      <div className="space-y-3.5 pt-2">
+                    {/* Realistic Hand Graphic Silhouette Behind Phone (Worldpay Style) */}
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[380px] h-[460px] pointer-events-none z-0">
+                      <svg viewBox="0 0 400 480" className="w-full h-full drop-shadow-xl" fill="none">
+                        <defs>
+                          <linearGradient id="skinTone" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#4a2c1d" />
+                            <stop offset="60%" stopColor="#3d2316" />
+                            <stop offset="100%" stopColor="#2c180f" />
+                          </linearGradient>
+                          <linearGradient id="thumbHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#5d3927" />
+                            <stop offset="100%" stopColor="#3d2316" />
+                          </linearGradient>
+                        </defs>
                         
-                        {/* 1. User Voice Query Bubble (Top White Pill) */}
-                        <div className="bg-white text-slate-900 rounded-full py-2.5 px-4 shadow-sm flex items-center gap-2 border border-slate-100">
-                          <span className="text-purple-600">
-                            <Volume2 className="w-4 h-4 animate-pulse" />
+                        {/* Palm and Forearm extending from bottom */}
+                        <path 
+                          d="M120 480 C110 390, 130 330, 160 280 C180 250, 200 240, 220 250 C240 260, 260 300, 270 360 C280 410, 280 480, 280 480 Z" 
+                          fill="url(#skinTone)" 
+                        />
+                        
+                        {/* Left Thumb resting on left bezel of phone */}
+                        <path 
+                          d="M85 240 C85 220, 105 210, 120 220 C135 230, 140 255, 135 280 C130 305, 110 315, 95 305 C85 295, 85 260, 85 240 Z" 
+                          fill="url(#thumbHighlight)" 
+                        />
+                        <path d="M92 230 C94 224, 102 222, 108 226 C110 232, 106 238, 100 238 C95 238, 91 234, 92 230 Z" fill="#6d4633" opacity="0.6" />
+
+                        {/* Right Fingertips wrapping around the right edge */}
+                        <path d="M325 210 C340 215, 345 230, 335 242 C325 250, 318 245, 315 235 Z" fill="url(#skinTone)" />
+                        <path d="M328 260 C342 265, 345 280, 336 292 C326 300, 319 295, 316 285 Z" fill="url(#skinTone)" />
+                        <path d="M320 310 C335 315, 338 330, 328 342 C318 350, 312 345, 309 335 Z" fill="url(#skinTone)" />
+                      </svg>
+                    </div>
+
+                    {/* Smartphone Titanium Frame (Matching iPhone Pro in Worldpay Screenshot) */}
+                    <div className="relative z-10 w-[295px] sm:w-[325px] h-[545px] sm:h-[585px] rounded-[52px] p-[3px] bg-gradient-to-b from-[#e2e8f0] via-[#cbd5e1] to-[#64748b] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.45)] flex flex-col">
+                      
+                      {/* Inner Black Bezel */}
+                      <div className="relative w-full h-full bg-black rounded-[49px] p-2 flex flex-col">
+                        
+                        {/* Dynamic Island Pill Notch */}
+                        <div className="absolute top-3.5 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-40 flex items-center justify-between px-2.5 shadow-md border border-slate-900">
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#0a0d1a] border border-blue-900/60 flex items-center justify-center">
+                            <span className="w-1 h-1 rounded-full bg-blue-500/40" />
                           </span>
-                          <span className="text-xs font-semibold text-slate-800 truncate">
-                            I need a dress for the weekend
-                          </span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#1e293b]" />
                         </div>
 
-                        {/* 2. AI Response Speech Bubble (Purple Bubble from Screenshot 1) */}
-                        <div className="bg-[#581c87] text-white rounded-2xl rounded-tl-sm p-3.5 shadow-sm border border-purple-700/60 text-xs leading-relaxed">
-                          <div className="flex items-start gap-2">
-                            <span className="w-5 h-5 rounded-full bg-purple-400/20 text-purple-200 flex items-center justify-center shrink-0 text-xs">
-                              ✨
-                            </span>
-                            <span className="font-medium text-purple-50">
-                              I found these dresses in your size, shall I order one?
-                            </span>
-                          </div>
-                        </div>
+                        {/* Inner Display Screen */}
+                        <div className="relative w-full h-full rounded-[41px] bg-gradient-to-b from-[#13172e] via-[#0b0e24] to-[#060814] pt-9 pb-5 px-3 flex flex-col justify-between overflow-visible text-left select-none">
+                          
+                          {/* Specular glass reflection diagonal highlight */}
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.1] rounded-[41px] pointer-events-none z-10" />
 
-                        {/* 3. Product Recommendation Card 1 (Screenshot 1: Patterned dress - $138.00) */}
-                        <div className="bg-white text-slate-900 rounded-2xl p-3 shadow-sm border border-slate-100 flex items-center justify-between gap-3">
-                          <div className="flex items-center gap-3">
-                            <img 
-                              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=200&q=80" 
-                              alt="Patterned dress"
-                              className="w-12 h-14 rounded-xl object-cover shrink-0" 
-                            />
-                            <div>
-                              <div className="font-bold text-xs text-slate-900">Patterned dress</div>
-                              <div className="text-[10px] text-slate-500 font-medium">New arrival</div>
-                              <div className="flex items-center gap-0.5 text-amber-500 text-[9px] mt-0.5">
-                                <span>★★★★★</span>
-                                <span className="text-slate-400">(136)</span>
+                          {/* Message Flow Area with Staggered Animations */}
+                          <div className="space-y-3 relative z-20 pt-2">
+                            
+                            {/* 1. Voice Prompt Pill (Anim Step 1+) */}
+                            {animStep >= 1 ? (
+                              <div className="animate-pop-in bg-white text-slate-900 rounded-full py-2 px-3.5 shadow-lg border border-slate-100 flex items-center gap-2 max-w-[95%] mx-auto">
+                                <div className="flex items-center gap-0.5 h-3.5 text-purple-600 shrink-0">
+                                  <span className="w-0.5 bg-purple-600 rounded-full h-3 animate-[soundwave_0.8s_ease-in-out_infinite]" />
+                                  <span className="w-0.5 bg-purple-600 rounded-full h-4 animate-[soundwave_0.6s_ease-in-out_infinite_0.15s]" />
+                                  <span className="w-0.5 bg-purple-600 rounded-full h-2 animate-[soundwave_0.9s_ease-in-out_infinite_0.3s]" />
+                                  <span className="w-0.5 bg-purple-600 rounded-full h-3.5 animate-[soundwave_0.7s_ease-in-out_infinite_0.1s]" />
+                                </div>
+                                <span className="text-[11px] sm:text-xs font-semibold text-slate-800 truncate">
+                                  I need a dress for the weekend
+                                </span>
                               </div>
-                            </div>
+                            ) : (
+                              <div className="h-9 transition-all opacity-0" />
+                            )}
+
+                            {/* 2. AI Assistant Speech Bubble (Anim Step 2+) */}
+                            {animStep >= 2 ? (
+                              <div className="animate-pop-in ml-auto mr-0 max-w-[240px] bg-[#581c87] text-white rounded-2xl rounded-tr-xs p-3 shadow-md border border-purple-500/40 text-[11px] sm:text-xs leading-relaxed">
+                                <div className="flex items-start gap-1.5">
+                                  <span className="text-xs shrink-0">✨</span>
+                                  <span className="font-medium text-purple-100">
+                                    I found these dresses in your size, shall I order one?
+                                  </span>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="h-12 transition-all opacity-0" />
+                            )}
+
+                            {/* 3. Product Card 1 - Patterned Dress (Anim Step 3+) */}
+                            {/* Breaks out of the left border with -left-6 sm:-left-9 just like Worldpay screenshot! */}
+                            {animStep >= 3 ? (
+                              <div className="animate-slide-left relative -left-6 sm:-left-9 w-[285px] sm:w-[325px] z-30 bg-white text-slate-900 rounded-2xl p-3 shadow-[0_20px_35px_-8px_rgba(0,0,0,0.35)] border border-slate-100 flex items-center justify-between gap-2.5 transition-transform hover:scale-102">
+                                <div className="flex items-center gap-2.5">
+                                  <img 
+                                    src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=220&q=80" 
+                                    alt="Patterned dress"
+                                    className="w-12 h-14 rounded-xl object-cover shrink-0 shadow-xs" 
+                                  />
+                                  <div>
+                                    <div className="font-bold text-xs text-slate-900">Patterned dress</div>
+                                    <div className="text-[10px] text-slate-500 font-medium">New arrival</div>
+                                    <div className="flex items-center gap-0.5 text-amber-500 text-[9px] mt-0.5">
+                                      <span>★★★★★</span>
+                                      <span className="text-slate-400 font-mono">(136)</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className="text-right shrink-0">
+                                  <div className="text-xs font-black text-slate-900 mb-1">$138.00</div>
+                                  <button 
+                                    onClick={() => handleAddToBasket('Patterned Dress')}
+                                    className={`text-[10px] font-bold px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+                                      animStep >= 5 
+                                        ? 'bg-emerald-600 text-white shadow-xs' 
+                                        : 'bg-[#7c3aed] hover:bg-[#6d28d9] text-white shadow-xs'
+                                    }`}
+                                  >
+                                    {animStep >= 5 ? '✓ Added' : 'Add to basket'}
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="h-16 transition-all opacity-0" />
+                            )}
+
+                            {/* 4. Product Card 2 - Flowing Dress (Anim Step 4+) */}
+                            {animStep >= 4 ? (
+                              <div className="animate-pop-in relative left-1 sm:left-3 w-[265px] sm:w-[300px] z-20 bg-white/95 backdrop-blur-sm text-slate-900 rounded-2xl p-2.5 shadow-[0_15px_30px_-8px_rgba(0,0,0,0.22)] border border-slate-100 flex items-center justify-between gap-2.5">
+                                <div className="flex items-center gap-2.5">
+                                  <img 
+                                    src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=220&q=80" 
+                                    alt="Flowing Dress"
+                                    className="w-10 h-11 rounded-lg object-cover shrink-0" 
+                                  />
+                                  <div>
+                                    <div className="font-bold text-xs text-slate-900 truncate">Flowing Dress</div>
+                                    <div className="text-[10px] text-slate-500 font-medium">Reduced price</div>
+                                    <div className="flex items-center gap-0.5 text-amber-500 text-[9px]">
+                                      <span>★★★★★</span>
+                                      <span className="text-slate-400 font-mono">(98)</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className="text-right shrink-0">
+                                  <div className="text-xs font-black text-slate-900 mb-1">$124.00</div>
+                                  <button 
+                                    onClick={() => handleAddToBasket('Flowing Dress')}
+                                    className="bg-slate-200 hover:bg-slate-300 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-lg transition cursor-pointer"
+                                  >
+                                    Add to basket
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="h-12 transition-all opacity-0" />
+                            )}
+
                           </div>
 
-                          <div className="text-right shrink-0">
-                            <div className="text-xs font-bold text-slate-900">$138.00</div>
-                            <button 
-                              onClick={() => handleAddToBasket('Patterned Dress')}
-                              className="mt-1 bg-[#203AE7] hover:bg-[#172DC2] text-white text-[10px] font-bold px-2.5 py-1 rounded-lg transition cursor-pointer"
-                            >
-                              Add to basket
-                            </button>
+                          {/* Phone Bottom Footer Branding */}
+                          <div className="pt-2 border-t border-slate-800/80 text-center relative z-20">
+                            <span className="text-[8px] sm:text-[9px] text-slate-400 uppercase tracking-widest block font-medium">
+                              Payments powered by
+                            </span>
+                            <span className="text-xs sm:text-sm font-black tracking-tight text-white inline-block mt-0.5">
+                              visionpay
+                            </span>
                           </div>
+
                         </div>
 
-                        {/* 4. Product Recommendation Card 2 (Screenshot 1: Flowing Dress - $124.00) */}
-                        <div className="bg-white/90 text-slate-900 rounded-2xl p-2.5 shadow-sm border border-slate-100 flex items-center justify-between gap-3">
-                          <div className="flex items-center gap-3">
-                            <img 
-                              src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=200&q=80" 
-                              alt="Flowing Dress"
-                              className="w-10 h-11 rounded-lg object-cover shrink-0" 
-                            />
-                            <div>
-                              <div className="font-bold text-xs text-slate-900 truncate">Flowing Dress</div>
-                              <div className="text-[10px] text-slate-500 font-medium">Reduced price</div>
-                            </div>
-                          </div>
-
-                          <div className="text-right shrink-0">
-                            <div className="text-xs font-bold text-slate-900">$124.00</div>
-                            <button 
-                              onClick={() => handleAddToBasket('Flowing Dress')}
-                              className="mt-1 bg-slate-200 hover:bg-slate-300 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-lg transition cursor-pointer"
-                            >
-                              Add to basket
-                            </button>
-                          </div>
-                        </div>
-
-                      </div>
-
-                      {/* Phone Bottom Footer Branding */}
-                      <div className="pt-3 border-t border-slate-900 text-center">
-                        <span className="text-[9px] text-slate-500 uppercase tracking-widest block font-medium">
-                          Payments powered by
-                        </span>
-                        <span className="text-xs font-black tracking-tight text-white mt-0.5 inline-block">
-                          visionpay
-                        </span>
                       </div>
 
                     </div>
